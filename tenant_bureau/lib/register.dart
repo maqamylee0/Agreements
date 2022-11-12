@@ -1,8 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tenant_bureau/verifyEmail.dart';
 
 import 'Utils.dart';
+import 'main.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -21,7 +23,7 @@ class _MyRegisterState extends State<MyRegister> {
         if(snapshot.hasData){
           return VerifyEmailPage();
         }else{
-        return MyRegister();
+        return Reg();
         }});
   }
 
@@ -33,7 +35,6 @@ class Reg extends StatefulWidget {
   State<Reg> createState() => _RegState();
 }
 class _RegState extends State<Reg> {
-  static final navigatorKey = GlobalKey<NavigatorState>();
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -86,7 +87,7 @@ class _RegState extends State<Reg> {
                             controller : nameController,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value)=>
-                            value != null ? "Enter a name": null,
+                            value == null ? "Enter a name": null,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -114,7 +115,7 @@ class _RegState extends State<Reg> {
                             controller : emailController,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (email)=>
-                            email != null && EmailValidator.validate(email) ? "Enter valid Email": null,
+                            email != null && EmailValidator.validate(email) ?  null:"Enter valid Email",
 
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
@@ -143,7 +144,7 @@ class _RegState extends State<Reg> {
                             controller : ninController,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value)=>
-                            value != null && value.length > 14 ? "Enter a valid NIN" : null,
+                            value != null && value.length == 14 ? null: "Enter a valid NIN" ,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -173,7 +174,7 @@ class _RegState extends State<Reg> {
 
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value)=>
-                            value != null && value.length > 6 ? "Password must be more than 6 characters  " : null,
+                            value != null && value.length > 6 ? null: "Password must be more than 6 characters",
                             style: TextStyle(color: Colors.white),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -270,12 +271,12 @@ class _RegState extends State<Reg> {
 //   );
 // }
 Future signUp(context,TextEditingController emailController,TextEditingController passwordController) async {
-  showDialog(context: context,barrierDismissible: false,
-      builder: (context) => Center(child: CircularProgressIndicator()));
+  // showDialog(context: context,barrierDismissible: false,
+  //     builder: (context) => Center(child: CircularProgressIndicator()));
   try{
     await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
   } on FirebaseException catch(e){
     print(e);
-    Utils.showSnackBar(e.message)
+    Utils.showSnackBar(e.message);
   }
   navigatorKey.currentState!.popUntil((route)=>route.isFirst);}}

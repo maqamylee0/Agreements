@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/register.dart';
 import 'Utils.dart';
+import 'login.dart';
 import 'main.dart';
 
 class MyReset extends StatefulWidget {
@@ -99,7 +100,7 @@ class _ResetState extends State<Reset> {
                                 height: 30,
                               ),
                               TextFormField(
-                                controller: passwordController,
+                                controller: emailController,
                                 autovalidateMode: AutovalidateMode.onUserInteraction,
                                 validator: (password)=>
                                 password != null && password.length > 6  ? "Enter a minimum of 6 characters": null,
@@ -180,9 +181,10 @@ class _ResetState extends State<Reset> {
         builder: (context) => Center(child: CircularProgressIndicator()));
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
+      Navigator.of(context).popUntil((route) => route.isFirst);
     } on FirebaseException catch(e){
       print(e);
-      Utils.showSnackBar(e.message)
+      Utils.showSnackBar(e.message);
 
     }
     navigatorKey.currentState!.popUntil((route)=>route.isFirst);

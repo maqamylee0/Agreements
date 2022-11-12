@@ -1,8 +1,8 @@
-import 'dart:js';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:tenant_bureau/home.dart';
 import 'package:tenant_bureau/register.dart';
 import 'Utils.dart';
 import 'main.dart';
@@ -22,9 +22,9 @@ class _MyLoginState extends State<MyLogin> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder:(context, snapshot){
           if(snapshot.hasData){
-            return Log();
+            return HomePage();
           }else{
-            return MyLogin();
+            return Log();
           }});
   }
 }
@@ -36,7 +36,6 @@ class Log extends StatefulWidget {
 }
 
 class _LogState extends State<Log> {
-  final navigatorKey = GlobalKey<NavigatorState>();
 
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
@@ -195,8 +194,9 @@ Future signIn(context,TextEditingController emailController,TextEditingControlle
   await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
   } on FirebaseException catch(e){
     print(e);
-    Utils.showSnackBar(e.message)
+    Utils.showSnackBar(e.message);
 
   }
+
   navigatorKey.currentState!.popUntil((route)=>route.isFirst);
 }}

@@ -4,16 +4,16 @@ import 'package:tenant_bureau/register.dart';
 import 'Utils.dart';
 import 'login.dart';
 
-Future main() async {
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
    await Firebase.initializeApp();
-  final navigatorKey = GlobalKey<NavigatorState>();
-
   runApp(MaterialApp(
 
     scaffoldMessengerKey: Utils.messengerKey,
-    navigatorKey:  navigatorKey,
+    navigatorKey: navigatorKey,
     debugShowCheckedModeBanner: false,
     home: MyLogin(),
     routes: {

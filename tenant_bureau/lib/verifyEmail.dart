@@ -43,10 +43,17 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   @override
   Widget build(BuildContext context) =>
       isVerified ? HomePage() :
-     Center(
-       child: Column(
+      Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/register.png'), fit: BoxFit.cover),
+          ),
+          child : Scaffold(
+         backgroundColor: Colors.transparent,
+
+         body:  Column(
          children: [
-           Text("A verification email has been sent to your email"),
+           Text("A verification email has been sent to your email" ,style: TextStyle(fontSize: 12)),
            SizedBox(
              height: 30,
            ),
@@ -69,7 +76,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
          ],
        )
 
-     );
+     ));
 
   Future sendVerifyEmail() async {
     try{
