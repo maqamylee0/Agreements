@@ -1,6 +1,7 @@
 
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/home.dart';
 import 'package:tenant_bureau/register.dart';
@@ -22,9 +23,9 @@ class _MyLoginState extends State<MyLogin> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder:(context, snapshot){
           if(snapshot.hasData){
-            return HomePage();
+            return const HomePage();
           }else{
-            return Log();
+            return const Log();
           }});
   }
 }
@@ -52,7 +53,7 @@ class _LogState extends State<Log> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/login.png'), fit: BoxFit.cover),
       ),
@@ -61,8 +62,8 @@ class _LogState extends State<Log> {
         body: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 35, top: 130),
-              child: Text(
+              padding: const EdgeInsets.only(left: 35, top: 130),
+              child: const Text(
                 'Welcome\nBack',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
@@ -75,7 +76,7 @@ class _LogState extends State<Log> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.only(left: 35, right: 35),
+            margin: const EdgeInsets.only(left: 35, right: 35),
             child: Form(
               key: formKey,
               child:
@@ -86,8 +87,8 @@ class _LogState extends State<Log> {
                   controller:emailController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (email)=>
-                  email != null && EmailValidator.validate(email) ? "Enter valid Email": null,
-                  style: TextStyle(color: Colors.black),
+                  email != null && EmailValidator.validate(email) ?  null:"Enter valid Email",
+                  style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                       fillColor: Colors.grey.shade100,
                       filled: true,
@@ -96,15 +97,15 @@ class _LogState extends State<Log> {
                         borderRadius: BorderRadius.circular(10),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 TextFormField(
                   controller: passwordController,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (password)=>
-                  password != null && password.length > 6  ? "Enter a minimum of 6 characters": null,
-                  style: TextStyle(),
+                  password != null && password.length > 6  ?  null:"Enter a minimum of 6 characters",
+                  style: const TextStyle(),
                   obscureText: true,
                   decoration: InputDecoration(
                       fillColor: Colors.grey.shade100,
@@ -114,32 +115,32 @@ class _LogState extends State<Log> {
                         borderRadius: BorderRadius.circular(10),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Sign in',
                       style: TextStyle(
                           fontSize: 27, fontWeight: FontWeight.w700),
                     ),
                     CircleAvatar(
                       radius: 30,
-                      backgroundColor: Color(0xff4c505b),
+                      backgroundColor: const Color(0xff4c505b),
                       child: IconButton(
                           color: Colors.white,
                           onPressed: () {
                             signIn(context,emailController,passwordController);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_forward,
                           )),
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -149,7 +150,8 @@ class _LogState extends State<Log> {
                       onPressed: () {
                         Navigator.pushNamed(context, 'register');
                       },
-                      child: Text(
+                      style: const ButtonStyle(),
+                      child: const Text(
                         'Sign Up',
                         textAlign: TextAlign.left,
                         style: TextStyle(
@@ -157,18 +159,8 @@ class _LogState extends State<Log> {
                             color: Color(0xff4c505b),
                             fontSize: 18),
                       ),
-                      style: ButtonStyle(),
                     ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Forgot Password',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Color(0xff4c505b),
-                            fontSize: 18,
-                          ),
-                        )),
+
                   ],
                 )
               ],
@@ -189,11 +181,13 @@ Future signIn(context,TextEditingController emailController,TextEditingControlle
   final isValid = formKey.currentState!.validate();
   if(!isValid) return;
   showDialog(context: context,barrierDismissible: false,
-      builder: (context) => Center(child: CircularProgressIndicator()));
+      builder: (context) => const Center(child: CircularProgressIndicator()));
   try{
   await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
   } on FirebaseException catch(e){
-    print(e);
+    if (kDebugMode) {
+      print(e);
+    }
     Utils.showSnackBar(e.message);
 
   }

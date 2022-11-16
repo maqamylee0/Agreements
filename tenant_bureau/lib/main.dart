@@ -17,8 +17,8 @@ Future main() async {
     debugShowCheckedModeBanner: false,
     home: MyLogin(),
     routes: {
-      'register': (context) => MyRegister(),
-      'login': (context) => MyLogin(),
+      'register': (context) => const MyRegister(),
+      'login': (context) => const MyLogin(),
     },
   ));
 }

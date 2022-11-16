@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/verifyEmail.dart';
 
@@ -21,9 +22,9 @@ class _MyRegisterState extends State<MyRegister> {
       stream: FirebaseAuth.instance.authStateChanges(),
         builder:(context, snapshot){
         if(snapshot.hasData){
-          return VerifyEmailPage();
+          return const VerifyEmailPage();
         }else{
-        return Reg();
+        return const Reg();
         }});
   }
 
@@ -50,10 +51,11 @@ class _RegState extends State<Reg> {
 
     super.dispose();
   }
-  @override
+
+    @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/register.png'), fit: BoxFit.cover),
       ),
@@ -66,8 +68,8 @@ class _RegState extends State<Reg> {
         body: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 35, top: 30),
-              child: Text(
+              padding: const EdgeInsets.only(left: 35, top: 30),
+              child: const Text(
                 'Create\nAccount',
                 style: TextStyle(color: Colors.white, fontSize: 33),
               ),
@@ -80,7 +82,7 @@ class _RegState extends State<Reg> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 35, right: 35),
+                      margin: const EdgeInsets.only(left: 35, right: 35),
                       child: Column(
                         children: [
                           TextFormField(
@@ -88,27 +90,27 @@ class _RegState extends State<Reg> {
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value)=>
                             value == null ? "Enter a name": null,
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.black,
                                   ),
                                 ),
                                 hintText: "Name",
-                                hintStyle: TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
                           TextFormField(
@@ -117,27 +119,27 @@ class _RegState extends State<Reg> {
                             validator: (email)=>
                             email != null && EmailValidator.validate(email) ?  null:"Enter valid Email",
 
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.black,
                                   ),
                                 ),
                                 hintText: "Email",
-                                hintStyle: TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
                           TextFormField(
@@ -145,27 +147,27 @@ class _RegState extends State<Reg> {
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value)=>
                             value != null && value.length == 14 ? null: "Enter a valid NIN" ,
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.black,
                                   ),
                                 ),
                                 hintText: "NIN",
-                                hintStyle: TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
 
@@ -175,35 +177,35 @@ class _RegState extends State<Reg> {
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value)=>
                             value != null && value.length > 6 ? null: "Password must be more than 6 characters",
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                             obscureText: true,
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.white,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.black,
                                   ),
                                 ),
                                 hintText: "Password",
-                                hintStyle: TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
 
-                              Text(
+                              const Text(
                                 'Sign Up',
                                 style: TextStyle(
                                     color: Colors.white,
@@ -213,19 +215,19 @@ class _RegState extends State<Reg> {
 
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Color(0xff4c505b),
+                                backgroundColor: const Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
                                       signUp(context,emailController,passwordController);
                                     },
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.arrow_forward,
                                     )),
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                           Row(
@@ -236,7 +238,8 @@ class _RegState extends State<Reg> {
                                   Navigator.pushNamed(context, 'login');
                                   // Navigator.of(context).push(_createRoute());
                                 },
-                                child: Text(
+                                style: const ButtonStyle(),
+                                child: const Text(
                                   'Sign In',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
@@ -244,7 +247,6 @@ class _RegState extends State<Reg> {
                                       color: Colors.white,
                                       fontSize: 18),
                                 ),
-                                style: ButtonStyle(),
                               ),
                             ],
                           )
@@ -276,7 +278,9 @@ Future signUp(context,TextEditingController emailController,TextEditingControlle
   try{
     await FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
   } on FirebaseException catch(e){
-    print(e);
+    if (kDebugMode) {
+      print(e);
+    }
     Utils.showSnackBar(e.message);
   }
   navigatorKey.currentState!.popUntil((route)=>route.isFirst);}}

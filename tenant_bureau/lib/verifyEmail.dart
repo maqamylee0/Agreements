@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/home.dart';
+import 'package:tenant_bureau/login.dart';
 
 import 'Utils.dart';
 
@@ -42,9 +43,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   }
   @override
   Widget build(BuildContext context) =>
-      isVerified ? HomePage() :
+      isVerified ? const MyLogin() :
       Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/register.png'), fit: BoxFit.cover),
           ),
@@ -53,23 +54,23 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
          body:  Column(
          children: [
-           Text("A verification email has been sent to your email" ,style: TextStyle(fontSize: 12)),
-           SizedBox(
+           const Text("A verification email has been sent to your email" ,style: TextStyle(fontSize: 12)),
+           const SizedBox(
              height: 30,
            ),
            ElevatedButton.icon(style:ElevatedButton.styleFrom(minimumSize: Size.fromHeight(50),),
-               icon: Icon(Icons.email,size: 32),
-             label: Text("Resend Email",
+               icon: const Icon(Icons.email,size: 32),
+             label: const Text("Resend Email",
                  style:TextStyle(fontSize: 24)),
            onPressed: () {
             canResend? sendVerifyEmail() : null;
            },),
-           SizedBox(
+           const SizedBox(
              height: 30,
            ),
            ElevatedButton.icon(style:ElevatedButton.styleFrom(minimumSize: Size.fromHeight(50),),
              icon: Icon(Icons.email,size: 32),
-             label: Text("Cancel",
+             label: const Text("Cancel",
                  style:TextStyle(fontSize: 24)),
              onPressed: () => FirebaseAuth.instance.signOut()
              ),
