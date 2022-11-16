@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                   shadowColor: Colors.black,
                   color: Colors.deepOrange.shade500,
                   child: Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -142,7 +142,7 @@ class _HomePageState extends State<HomePage> {
                   shadowColor: Colors.black,
                   color: Colors.grey.shade300,
                   child: Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -161,15 +161,15 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 20),
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               border: Border.all(color: Colors.grey)
             ),
-            padding: EdgeInsets.all(4),
+            padding: const EdgeInsets.all(4),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children:[
                 const Text("Tenants"),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
 
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
                   color: Colors.deepOrange.shade50,
                   child:
@@ -188,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                         Row(
 
                           children: [
-                            Icon(Icons.account_box,size: 50,),
+                            const Icon(Icons.account_box,size: 50,),
                             Column(
                               children: const [
                                 Text("Emmilly"),
@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
 
-                        TextButton(onPressed: onPressed, child: Text("Edit"),
+                        TextButton(onPressed: onPressed,
                           style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(Colors.deepOrange),
                               backgroundColor:MaterialStateProperty.all<Color>(Colors.deepOrange.shade50) ,
@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage> {
 
                                   )
                               )
-                          ),)
+                          ), child: const Text("Edit"),)
                       ],
                     )
                 )
