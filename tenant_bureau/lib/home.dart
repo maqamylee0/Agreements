@@ -159,7 +159,67 @@ class _HomePageState extends State<HomePage> {
             ],
           )),
           const SizedBox(height: 20),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              border: Border.all(color: Colors.grey)
+            ),
+            padding: EdgeInsets.all(4),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:[
+                const Text("Tenants"),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text("DETAILS"),
+                    Text("ACTIONS")
 
+                  ],
+                ),
+                SizedBox(height: 20),
+                Container(
+                  color: Colors.deepOrange.shade50,
+                  child:
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+
+                          children: [
+                            Icon(Icons.account_box,size: 50,),
+                            Column(
+                              children: const [
+                                Text("Emmilly"),
+                                Text("Room 34")
+                              ],
+                            ),
+                          ],
+                        ),
+
+                        TextButton(onPressed: onPressed, child: Text("Edit"),
+                          style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.deepOrange),
+                              backgroundColor:MaterialStateProperty.all<Color>(Colors.deepOrange.shade50) ,
+
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16.0),
+                                    side:  BorderSide(color: Colors.deepOrange.shade200),
+
+                                  )
+                              )
+                          ),)
+                      ],
+                    )
+                )
+
+
+              ]
+
+            ),
+          )
         ],
 
       ))
