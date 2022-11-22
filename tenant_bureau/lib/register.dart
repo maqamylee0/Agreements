@@ -3,6 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive/hive.dart';
 import 'package:tenant_bureau/verifyEmail.dart';
@@ -73,7 +74,7 @@ class _RegState extends State<Reg> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/register.png'), fit: BoxFit.cover),
+            image: AssetImage('assets/background.png'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -84,13 +85,17 @@ class _RegState extends State<Reg> {
         body: Stack(
           children: [
             Container(
-              padding: const EdgeInsets.only(left: 35, top: 30),
-              child: const Text(
-                'Create\nAccount',
-                style: TextStyle(color: Colors.white, fontSize: 33),
-              ),
+              // padding: const EdgeInsets.only(left: 35, top: 30),
+              child:Container(
+                padding: EdgeInsets.fromLTRB(100, 0, 30, 0),
+                  child:LimitedBox(
+                    child: SvgPicture.asset("assets/icons/agreement.svg",  width: 200, height: 200,),
+                    maxHeight: 50,
+                    maxWidth: 300,
+                  ))
             ),
             SingleChildScrollView(
+
               child: Container(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.28),
