@@ -38,19 +38,24 @@ class Welcome extends StatelessWidget {
               padding: EdgeInsets.all(30),
               child: const Text("GET TENANT HISTORY RECORDS FROM PREVIOUS LANDLORDS",style: TextStyle(fontSize: 30),),
             ),
-    ElevatedButton(
-    child: Text("ElevatedButton"),
-    onPressed: () => print("it's pressed"),
-    style: ElevatedButton.styleFrom(
-    primary: Colors.red,
-    onPrimary: Colors.white,
-    shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(32.0),
-    ),
-    ),
-    )
+            Container(
+              padding: EdgeInsets.all(30),
+              child:ElevatedButton(
 
-                      child: const Text("GET STARTED"))
+                child: Text("GET STARTED"),
+                onPressed: () => print("it's pressed"),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size.fromHeight(50),
+                  primary: Colors.brown,
+                  onPrimary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ),
+            )
+
+
 
                 ])));
   }
