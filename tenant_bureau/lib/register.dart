@@ -85,15 +85,12 @@ class _RegState extends State<Reg> {
         body: Stack(
           children: [
             Container(
-              // padding: const EdgeInsets.only(left: 35, top: 30),
-              child:Container(
-                padding: EdgeInsets.fromLTRB(100, 0, 30, 0),
-                  child:LimitedBox(
-                    child: SvgPicture.asset("assets/icons/agreement.svg",  width: 200, height: 200,),
-                    maxHeight: 50,
-                    maxWidth: 300,
-                  ))
-            ),
+              padding: EdgeInsets.fromLTRB(100, 0, 30, 0),
+                child:LimitedBox(
+                  child: SvgPicture.asset("assets/icons/agreement.svg",  width: 200, height: 200,),
+                  maxHeight: 50,
+                  maxWidth: 300,
+                )),
             SingleChildScrollView(
 
               child: Container(
