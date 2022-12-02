@@ -3,10 +3,10 @@ import 'dart:js';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tenant_bureau/register.dart';
+import 'package:tenant_bureau/views/register.dart';
 import 'Utils.dart';
 import 'login.dart';
-import 'main.dart';
+import '../main.dart';
 
 class MyReset extends StatefulWidget {
   const MyReset({Key? key}) : super(key: key);
@@ -150,8 +150,8 @@ class _ResetState extends State<Reset> {
                                       onPressed: () {
                                         reset(context,emailController);
                                       },
-                                      child: Text(
-                                        'Rest Password',
+                                      child: const Text(
+                                        'Reset Password',
                                         style: TextStyle(
                                           decoration: TextDecoration.underline,
                                           color: Color(0xff4c505b),

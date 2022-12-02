@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tenant_bureau/home.dart';
-import 'package:tenant_bureau/login.dart';
+import 'package:tenant_bureau/views/home.dart';
+import 'package:tenant_bureau/views/login.dart';
 
 import 'Utils.dart';
 

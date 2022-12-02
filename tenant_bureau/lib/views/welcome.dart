@@ -1,6 +1,9 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'login.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -36,15 +39,18 @@ class Welcome extends StatelessWidget {
             // ),
             Container(
               padding: EdgeInsets.all(30),
-              child: const Text("GET TENANT HISTORY RECORDS FROM PREVIOUS LANDLORDS",style: TextStyle(fontSize: 30),),
+              child: const Text("Get Tenant history records from previous Landlords",style: TextStyle(fontSize: 32,fontWeight: FontWeight.bold),),
             ),
-            SizedBox(height: 50,),
+            SizedBox(height: 20,),
             Container(
               padding: EdgeInsets.all(30),
               child:ElevatedButton(
 
-                child: Text("GET STARTED"),
-                onPressed: () => print("it's pressed"),
+                child: Text("Get Started",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
+                onPressed: () => {
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Log()))
+                },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size.fromHeight(60),
                   primary: Colors.brown[700],
@@ -61,5 +67,5 @@ class Welcome extends StatelessWidget {
                 ])));
   }
 
-  onPressed() {}
+
 }

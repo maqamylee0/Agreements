@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive/hive.dart';
-import 'package:tenant_bureau/verifyEmail.dart';
+import 'package:tenant_bureau/views/verifyEmail.dart';
 
 import 'Utils.dart';
 import 'login.dart';
-import 'main.dart';
-import 'models/User.dart';
+import '../main.dart';
+import '../models/User.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
