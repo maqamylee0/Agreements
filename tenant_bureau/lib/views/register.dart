@@ -84,13 +84,13 @@ class _RegState extends State<Reg> {
         ),
         body: Stack(
           children: [
-            Container(
-              padding: EdgeInsets.fromLTRB(100, 0, 30, 0),
-                child:LimitedBox(
-                  child: SvgPicture.asset("assets/icons/agreement.svg",  width: 200, height: 200,),
-                  maxHeight: 50,
-                  maxWidth: 300,
-                )),
+            // Container(
+            //   padding: EdgeInsets.fromLTRB(100, 0, 30, 0),
+            //     child:LimitedBox(
+            //       child: SvgPicture.asset("assets/icons/agreement.svg",  width: 200, height: 200,),
+            //       maxHeight: 50,
+            //       maxWidth: 300,
+            //     )),
             SingleChildScrollView(
 
               child: Container(
@@ -108,12 +108,12 @@ class _RegState extends State<Reg> {
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value)=>
                             value == null ? "Enter a name": null,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -123,13 +123,13 @@ class _RegState extends State<Reg> {
                                   ),
                                 ),
                                 hintText: "Name",
-                                hintStyle: const TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Colors.black),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 10,
                           ),
                           TextFormField(
                             controller : emailController,
@@ -137,12 +137,12 @@ class _RegState extends State<Reg> {
                             validator: (email)=>
                             email != null && EmailValidator.validate(email) ?  null:"Enter valid Email",
 
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -152,25 +152,25 @@ class _RegState extends State<Reg> {
                                   ),
                                 ),
                                 hintText: "Email",
-                                hintStyle: const TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Colors.black),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 10,
                           ),
                           TextFormField(
                             controller : ninController,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value)=>
                             value != null && value.length == 14 ? null: "Enter a valid NIN" ,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -180,13 +180,13 @@ class _RegState extends State<Reg> {
                                   ),
                                 ),
                                 hintText: "NIN",
-                                hintStyle: const TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Colors.black),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
                           const SizedBox(
-                            height: 30,
+                            height: 10,
                           ),
 
                           TextFormField(
@@ -195,13 +195,13 @@ class _RegState extends State<Reg> {
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (value)=>
                             value != null && value.length > 6 ? null: "Password must be more than 6 characters",
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.black),
                             obscureText: true,
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
@@ -211,42 +211,58 @@ class _RegState extends State<Reg> {
                                   ),
                                 ),
                                 hintText: "Password",
-                                hintStyle: const TextStyle(color: Colors.white),
+                                hintStyle: const TextStyle(color: Colors.black),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
                           ),
                           const SizedBox(
-                            height: 40,
+                            height: 20,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                          ElevatedButton(
 
-                              const Text(
-                                'Sign Up',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 27,
-                                    fontWeight: FontWeight.w700),
+                            child: Text("Sign Up",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
+                            onPressed: () => {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => const Log()))
+                            },
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size.fromHeight(60),
+                              primary: Colors.brown[700],
+                              onPrimary: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
-
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: const Color(0xff4c505b),
-                                child: IconButton(
-                                    color: Colors.white,
-                                    onPressed: () {
-                                      signUp(emailController.text,passwordController.text);
-                                    },
-                                    icon: const Icon(
-                                      Icons.arrow_forward,
-                                    )),
-                              )
-                            ],
+                            ),
                           ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //   children: [
+                          //
+                          //     const Text(
+                          //       'Sign Up',
+                          //       style: TextStyle(
+                          //           color: Colors.white,
+                          //           fontSize: 27,
+                          //           fontWeight: FontWeight.w700),
+                          //     ),
+                          //
+                          //     CircleAvatar(
+                          //       radius: 30,
+                          //       backgroundColor: const Color(0xff4c505b),
+                          //       child: IconButton(
+                          //           color: Colors.white,
+                          //           onPressed: () {
+                          //             signUp(emailController.text,passwordController.text);
+                          //           },
+                          //           icon: const Icon(
+                          //             Icons.arrow_forward,
+                          //           )),
+                          //     )
+                          //   ],
+                          // ),
                           const SizedBox(
-                            height: 40,
+                            height: 20,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -262,7 +278,7 @@ class _RegState extends State<Reg> {
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       decoration: TextDecoration.underline,
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontSize: 18),
                                 ),
                               ),

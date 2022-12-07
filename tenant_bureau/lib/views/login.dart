@@ -118,28 +118,44 @@ class _LogState extends State<Log> {
                 const SizedBox(
                   height: 40,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Sign in',
-                      style: TextStyle(
-                          fontSize: 27, fontWeight: FontWeight.w700),
+                ElevatedButton(
+
+                  child: Text("Login",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
+                  onPressed: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Log()))
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size.fromHeight(60),
+                    primary: Colors.brown[700],
+                    onPrimary: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: const Color(0xff4c505b),
-                      child: IconButton(
-                          color: Colors.white,
-                          onPressed: () {
-                            signIn(context,emailController,passwordController);
-                          },
-                          icon: const Icon(
-                            Icons.arrow_forward,
-                          )),
-                    )
-                  ],
+                  ),
                 ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     const Text(
+                //       'Sign in',
+                //       style: TextStyle(
+                //           fontSize: 27, fontWeight: FontWeight.w700),
+                //     ),
+                //     CircleAvatar(
+                //       radius: 30,
+                //       backgroundColor: const Color(0xff4c505b),
+                //       child: IconButton(
+                //           color: Colors.white,
+                //           onPressed: () {
+                //             signIn(context,emailController,passwordController);
+                //           },
+                //           icon: const Icon(
+                //             Icons.arrow_forward,
+                //           )),
+                //     )
+                //   ],
+                // ),
                 const SizedBox(
                   height: 40,
                 ),
