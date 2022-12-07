@@ -167,14 +167,31 @@ class _LogState extends State<Log> {
                         Navigator.pushNamed(context, 'register');
                       },
                       style: const ButtonStyle(),
-                      child: const Text(
-                        'Sign Up',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Color(0xff4c505b),
-                            fontSize: 18),
-                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            'Sign Up',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Color(0xff4c505b),
+                                fontSize: 18),
+                          ),
+                          SizedBox(
+                            width: 50,
+                          ),
+                          Text(
+                            'Forgot Password',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                color: Color(0xff4c505b),
+                                fontSize: 18),
+                          )
+                        ],
+                      )
+
                     ),
 
                   ],

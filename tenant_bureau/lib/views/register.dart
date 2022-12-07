@@ -132,6 +132,7 @@ class _RegState extends State<Reg> {
                             height: 10,
                           ),
                           TextFormField(
+
                             controller : emailController,
                             autovalidateMode: AutovalidateMode.onUserInteraction,
                             validator: (email)=>
