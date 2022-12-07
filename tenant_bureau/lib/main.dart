@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/views/register.dart';
+import 'package:tenant_bureau/views/reset.dart';
 import 'views/Utils.dart';
 import 'views/login.dart';
 import 'views/welcome.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         'register': (context) => const MyRegister(),
         'login': (context) => const MyLogin(),
         'welcome': (context) => const Welcome(),
+        'reset':(context) => const Reset(),
 
       },
     );
