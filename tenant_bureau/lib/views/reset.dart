@@ -51,28 +51,32 @@ class _ResetState extends State<Reset> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/login.png'), fit: BoxFit.cover),
-      ),
+      // decoration: BoxDecoration(
+      //   image: DecorationImage(
+      //       image: AssetImage('assets/login.png'), fit: BoxFit.cover),
+      // ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         body: Stack(
           children: [
-            Container(
-              padding: EdgeInsets.only(left: 35, top: 130),
-              child: Text(
-                'Reset\nPassword',
-                style: TextStyle(color: Colors.white, fontSize: 33),
-              ),
-            ),
+
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.5),
+                    top: MediaQuery.of(context).size.height * 0.05),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 35, top: 130),
+                      child: Text(
+                        'Reset\nPassword',
+                        style: TextStyle(color: Colors.brown, fontSize: 33),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 100,
+                    ),
                     Container(
                         margin: EdgeInsets.only(left: 35, right: 35),
                         child: Form(
@@ -98,21 +102,37 @@ class _ResetState extends State<Reset> {
                               SizedBox(
                                 height: 30,
                               ),
-                              TextFormField(
-                                controller: emailController,
-                                autovalidateMode: AutovalidateMode.onUserInteraction,
-                                validator: (password)=>
-                                password != null && password.length > 6  ? "Enter a minimum of 6 characters": null,
-                                style: TextStyle(),
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                    fillColor: Colors.grey.shade100,
-                                    filled: true,
-                                    hintText: "Password",
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    )),
+                              ElevatedButton(
+
+                                child: Text("Reset Password",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
+                                onPressed: () => {
+                                  // Navigator.push(context,
+                                      // MaterialPageRoute(builder: (context) => const Log()))
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  minimumSize: Size.fromHeight(60),
+                                  primary: Colors.brown[700],
+                                  onPrimary: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
                               ),
+                              // TextFormField(
+                              //   controller: emailController,
+                              //   autovalidateMode: AutovalidateMode.onUserInteraction,
+                              //   validator: (password)=>
+                              //   password != null && password.length > 6  ? "Enter a minimum of 6 characters": null,
+                              //   style: TextStyle(),
+                              //   obscureText: true,
+                              //   decoration: InputDecoration(
+                              //       fillColor: Colors.grey.shade100,
+                              //       filled: true,
+                              //       hintText: "Password",
+                              //       border: OutlineInputBorder(
+                              //         borderRadius: BorderRadius.circular(10),
+                              //       )),
+                              // ),
                               // SizedBox(
                               //   height: 40,
                               // ),
@@ -141,24 +161,7 @@ class _ResetState extends State<Reset> {
                               // SizedBox(
                               //   height: 40,
                               // ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
 
-                                  TextButton(
-                                      onPressed: () {
-                                        reset(context,emailController);
-                                      },
-                                      child: const Text(
-                                        'Reset Password',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: Color(0xff4c505b),
-                                          fontSize: 18,
-                                        ),
-                                      )),
-                                ],
-                              )
                             ],
                           ),)
                     )
