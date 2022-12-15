@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/views/home.dart';
 import 'package:tenant_bureau/views/register.dart';
+import '../dashboard/home/home.dart';
 import 'Utils.dart';
 import '../main.dart';
 
@@ -124,7 +125,7 @@ class _LogState extends State<Log> {
                   child: Text("Login",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
                   onPressed: () => {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Log()))
+                        MaterialPageRoute(builder: (context) => const Home()))
                   },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size.fromHeight(60),
