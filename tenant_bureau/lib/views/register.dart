@@ -72,22 +72,16 @@ class _RegState extends State<Reg> {
     @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/background.png'), fit: BoxFit.cover),
-      ),
+      // decoration: const BoxDecoration(
+      //   image: DecorationImage(
+      //       image: AssetImage('assets/background.pn'), fit: BoxFit.cover),
+
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
 
         body: Stack(
           children: [
-            Container(
-              padding: const EdgeInsets.all(60),
-              child: const Text(
-                'Create \n account',
-                style: TextStyle(color: Colors.white, fontSize: 30,fontWeight: FontWeight.bold),
-              ),
-            ),
+
 
             // Container(
             //   padding: EdgeInsets.fromLTRB(100, 0, 30, 0),
@@ -100,11 +94,17 @@ class _RegState extends State<Reg> {
 
               child: Container(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.28),
+                    top: MediaQuery.of(context).size.height * 0.05),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
+                    Container(
+                      padding: const EdgeInsets.all(60),
+                      child: const Text(
+                        'Create \n account',
+                        style: TextStyle(color: Colors.brown, fontSize: 30,fontWeight: FontWeight.bold),
+                      ),
+                    ),
                     Container(
                       margin: const EdgeInsets.only(left: 35, right: 35),
                       child: Column(
