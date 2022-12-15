@@ -78,12 +78,17 @@ class _RegState extends State<Reg> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
+
         body: Stack(
           children: [
+            Container(
+              padding: const EdgeInsets.all(60),
+              child: const Text(
+                'Create \n account',
+                style: TextStyle(color: Colors.white, fontSize: 30,fontWeight: FontWeight.bold),
+              ),
+            ),
+
             // Container(
             //   padding: EdgeInsets.fromLTRB(100, 0, 30, 0),
             //     child:LimitedBox(
@@ -99,6 +104,7 @@ class _RegState extends State<Reg> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
                     Container(
                       margin: const EdgeInsets.only(left: 35, right: 35),
                       child: Column(

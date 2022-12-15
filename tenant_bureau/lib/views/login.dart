@@ -62,10 +62,10 @@ class _LogState extends State<Log> {
         body: Stack(
           children: [
             Container(
-              padding: const EdgeInsets.only(left: 35, top: 130),
+              padding: const EdgeInsets.all(60),
               child: const Text(
                 'Welcome\nBack',
-                style: TextStyle(color: Colors.white, fontSize: 33),
+                style: TextStyle(color: Colors.white, fontSize: 30,fontWeight: FontWeight.bold),
               ),
             ),
             SingleChildScrollView(
