@@ -11,7 +11,10 @@ class NewHome extends StatefulWidget {
 class _NewHomeState extends State<NewHome> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
+
+    child:
+      Container(
       padding: EdgeInsets.all(50),
       child: Column(
         children: [
@@ -83,7 +86,7 @@ class _NewHomeState extends State<NewHome> {
             height: 200,
           ),
           Container(
-            height: MediaQuery.of(context).size.height*0.4,
+            height: MediaQuery.of(context).size.height*0.9,
             child:  GridView(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -91,8 +94,7 @@ class _NewHomeState extends State<NewHome> {
                     mainAxisSpacing: 10),
                 children: [
                   Container(
-                      height: 50,
-                      width: 50,
+
                       // padding: EdgeInsets.all(40),
                       child: Card(
                           shape: RoundedRectangleBorder(
@@ -118,8 +120,7 @@ class _NewHomeState extends State<NewHome> {
                   ),
 
                   Container(
-                      height: 50,
-                      width: 50,
+
                       // padding: EdgeInsets.all(40),
                       child: Card(
                           shape: RoundedRectangleBorder(
@@ -144,8 +145,7 @@ class _NewHomeState extends State<NewHome> {
                       )
                   ),
                   Container(
-                      height: 50,
-                      width: 50,
+
                       // padding: EdgeInsets.all(40),
                       child: Card(
                           shape: RoundedRectangleBorder(
@@ -170,8 +170,7 @@ class _NewHomeState extends State<NewHome> {
                       )
                   ),
                   Container(
-                      height: 50,
-                      width: 50,
+
                       // padding: EdgeInsets.all(40),
                       child: Card(
                           shape: RoundedRectangleBorder(
@@ -199,6 +198,6 @@ class _NewHomeState extends State<NewHome> {
           )
         ],
       ),
-    );
+    ));
   }
 }

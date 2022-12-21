@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/views/register.dart';
 import 'package:tenant_bureau/views/reset.dart';
+import 'package:tenant_bureau/views/verifyEmail.dart';
 import 'views/Utils.dart';
 import 'views/login.dart';
 import 'views/welcome.dart';
@@ -19,6 +20,7 @@ Future main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
+  // MyApp());
     DevicePreview(
       builder: (BuildContext context)=> const MyApp(),
     ));
