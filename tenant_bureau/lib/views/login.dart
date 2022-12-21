@@ -3,6 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:tenant_bureau/dashboard/home/newhome.dart';
 import 'package:tenant_bureau/views/home.dart';
 import 'package:tenant_bureau/views/register.dart';
 import '../dashboard/home/home.dart';
@@ -24,7 +25,7 @@ class _MyLoginState extends State<MyLogin> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder:(context, snapshot){
           if(snapshot.hasData){
-            return const HomePage();
+            return const NewHome();
           }else{
             return const Log();
           }});
