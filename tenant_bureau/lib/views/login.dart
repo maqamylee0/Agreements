@@ -7,6 +7,7 @@ import 'package:tenant_bureau/dashboard/home/newhome.dart';
 import 'package:tenant_bureau/views/home.dart';
 import 'package:tenant_bureau/views/register.dart';
 import '../dashboard/home/home.dart';
+import '../services/auth.dart';
 import 'Utils.dart';
 import '../main.dart';
 
@@ -43,6 +44,7 @@ class _LogState extends State<Log> {
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  Auth auth = Auth();
 
   @override
   void dispose(){
@@ -125,8 +127,7 @@ class _LogState extends State<Log> {
 
                   child: Text("Login",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
                   onPressed: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Home()))
+                      auth.signIn(context, emailController.text, passwordController.text)
                   },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size.fromHeight(60),
@@ -209,20 +210,21 @@ class _LogState extends State<Log> {
   }
 
 
-Future signIn(context,TextEditingController emailController,TextEditingController passwordController) async {
-  final isValid = formKey.currentState!.validate();
-  if(!isValid) return;
-  showDialog(context: context,barrierDismissible: false,
-      builder: (context) => const Center(child: CircularProgressIndicator()));
-  try{
-  await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
-  } on FirebaseException catch(e){
-    if (kDebugMode) {
-      print(e);
-    }
-    Utils.showSnackBar(e.message);
-
-  }
-
-  navigatorKey.currentState!.popUntil((route)=>route.isFirst);
-}}
+// Future signIn(context,TextEditingController emailController,TextEditingController passwordController) async {
+//   final isValid = formKey.currentState!.validate();
+//   if(!isValid) return;
+//   showDialog(context: context,barrierDismissible: false,
+//       builder: (context) => const Center(child: CircularProgressIndicator()));
+//   try{
+//   await FirebaseAuth.instance.signInWithEmailAndPassword(email: emailController.text.trim(), password: passwordController.text.trim());
+//   } on FirebaseException catch(e){
+//     if (kDebugMode) {
+//       print(e);
+//     }
+//     Utils.showSnackBar(e.message);
+//
+//   }
+//
+//   navigatorKey.currentState!.popUntil((route)=>route.isFirst);
+// }
+}

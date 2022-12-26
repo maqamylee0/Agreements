@@ -3,6 +3,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:tenant_bureau/dashboard/home/newhome.dart';
 import 'package:tenant_bureau/views/register.dart';
 import 'package:tenant_bureau/views/reset.dart';
 import 'package:tenant_bureau/views/verifyEmail.dart';
@@ -35,11 +36,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Manrope',
+        primarySwatch:Colors.brown
       ),
       scaffoldMessengerKey: Utils.messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      home: Welcome(),
+      home: NewHome(),
       routes: {
         'register': (context) => const MyRegister(),
         'login': (context) => const MyLogin(),

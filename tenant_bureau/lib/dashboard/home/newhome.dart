@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'addTenant/add_tenant.dart';
+
 class NewHome extends StatefulWidget {
   const NewHome({Key? key}) : super(key: key);
 
@@ -12,6 +14,7 @@ class _NewHomeState extends State<NewHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: SingleChildScrollView(
 
       child:
@@ -29,7 +32,10 @@ class _NewHomeState extends State<NewHome> {
                       height: 50,
                       child:
                       TextButton(
-                          onPressed:(){},
+                          onPressed:(){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => const AddTenant()));
+                          },
                           style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(Colors.brown),
                               backgroundColor:MaterialStateProperty.all<Color>(Colors.brown.shade50) ,
@@ -46,6 +52,7 @@ class _NewHomeState extends State<NewHome> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const [
+
                               Icon(Icons.add),
                               Text("ADD NEW")
                             ],

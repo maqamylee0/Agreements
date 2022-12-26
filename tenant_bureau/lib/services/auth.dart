@@ -12,6 +12,7 @@ import 'package:tenant_bureau/views/reset.dart';
 import 'package:tenant_bureau/views/verifyEmail.dart';
 
 import '../../main.dart';
+import '../dashboard/home/home.dart';
 
 class Auth{
   String? errorMessage;
@@ -100,9 +101,8 @@ class Auth{
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email.trim(), password:password.trim());
 
-      Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) =>  HomePage())
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const Home())
 
       );
     } on FirebaseException catch(e){
