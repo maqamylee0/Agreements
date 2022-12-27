@@ -7,6 +7,8 @@ import 'package:tenant_bureau/dashboard/home/newhome.dart';
 import 'package:tenant_bureau/views/register.dart';
 import 'package:tenant_bureau/views/reset.dart';
 import 'package:tenant_bureau/views/verifyEmail.dart';
+import 'dashboard/home/addTenant/trialhome.dart';
+import 'dashboard/home/home.dart';
 import 'views/Utils.dart';
 import 'views/login.dart';
 import 'views/welcome.dart';
@@ -41,7 +43,8 @@ class MyApp extends StatelessWidget {
       scaffoldMessengerKey: Utils.messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      home: NewHome(),
+      home:
+      Home(),
       routes: {
         'register': (context) => const MyRegister(),
         'login': (context) => const MyLogin(),
