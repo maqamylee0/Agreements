@@ -115,7 +115,7 @@ class Auth{
 
     }
 
-    // navigatorKey.currentState!.popUntil((route)=>route.isFirst);
+    navigatorKey.currentState!.popUntil((route)=>route.isFirst);
   }
 
   Future<void> passwordReset(String? email,context) async {
