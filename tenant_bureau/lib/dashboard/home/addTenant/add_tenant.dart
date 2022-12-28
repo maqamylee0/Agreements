@@ -244,7 +244,7 @@ class _AddTenantState extends State<AddTenant> {
     var userid =  await prefs.getString('userid');
     tenant.landlordUid = userid;
     tenant.name = nameController.text;
-    tenant.nin = ninController.text;
+    tenant.nin = ninController.text.toLowerCase();
     tenant.phone= phoneControlller.text ;
     tenant.email = emailController.text;
     tenant.nextOfKin = nextOfKinController.text;

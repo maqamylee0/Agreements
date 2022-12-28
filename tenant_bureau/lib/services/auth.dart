@@ -137,5 +137,25 @@ class Auth{
       print(e);
     }
   }
+  Future<Map> getTenant(context, query) async {
+    late Map<dynamic, dynamic> doc ;
+    // showDialog(context: context,barrierDismissible: false,
+    //     builder: (context) => const Center(child: CircularProgressIndicator()));
+    try{
+      FirebaseFirestore mFirebaseFirestore = FirebaseFirestore.instance;
 
+        await mFirebaseFirestore.collection('tenants')
+        .where('nin', isEqualTo: query)
+        .get()
+        .then((snapshot) {
+            doc = snapshot.docs[0].data() ;
+          });
+
+  } catch (e) {
+      print(e);
+    }
+    // navigatorKey.currentState!.popUntil((route)=>route.);
+    print(doc['nin']);
+    return doc;
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../search/pages/search_tenant.dart';
 import 'addTenant/add_tenant.dart';
 
 class NewHome extends StatefulWidget {
@@ -75,7 +76,10 @@ class _NewHomeState extends State<NewHome> {
                       width: 120,
                       child:
                       TextButton(
-                          onPressed:(){},
+                          onPressed:(){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => const SearchTenant()));
+                          },
                           style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(Colors.brown),
                               backgroundColor:MaterialStateProperty.all<Color>(Colors.brown.shade50) ,

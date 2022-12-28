@@ -1,4 +1,3 @@
-
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -8,8 +7,8 @@ import 'package:tenant_bureau/views/home.dart';
 import 'package:tenant_bureau/views/register.dart';
 import '../dashboard/home/home.dart';
 import '../services/auth.dart';
-import 'Utils.dart';
-import '../main.dart';
+// import 'Utils.dart';
+// import '../main.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);

@@ -7,7 +7,6 @@ import 'package:tenant_bureau/dashboard/home/newhome.dart';
 import 'package:tenant_bureau/views/register.dart';
 import 'package:tenant_bureau/views/reset.dart';
 import 'package:tenant_bureau/views/verifyEmail.dart';
-import 'dashboard/home/addTenant/trialhome.dart';
 import 'dashboard/home/home.dart';
 import 'views/Utils.dart';
 import 'views/login.dart';
