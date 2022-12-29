@@ -55,7 +55,7 @@ class _TenantListState extends State<TenantList> {
           Center(child: CircularProgressIndicator()):
       SafeArea(
         child: Container(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.all(20),
           child: Column(
             children: [
               SizedBox(

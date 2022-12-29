@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             fontFamily: 'Manrope',
             primarySwatch: Colors.brown
+
         ),
         scaffoldMessengerKey: Utils.messengerKey,
         navigatorKey: navigatorKey,

@@ -41,7 +41,7 @@ class _TenantCardState extends State<TenantCard> {
     padding: const EdgeInsets.all(8.0),
     child: Text('${widget.tenant.email}',style: TextStyle(color: Colors.grey),),
     ),
-    SizedBox(height: 20,), TenantButton(title:"Rate Tenant",),
+    SizedBox(height: 20,), TenantButton(tenant: widget.tenant,),
 
 
     ],
