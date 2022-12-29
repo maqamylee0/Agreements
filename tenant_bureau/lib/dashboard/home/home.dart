@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tenant_bureau/dashboard/home/list_tenants/tenant_list.dart';
 
 import '../../views/home.dart';
 import 'Tenants.dart';
@@ -24,8 +25,8 @@ class _HomeState extends State<Home> {
       body: IndexedStack(
         children: [
           NewHome(),
-          Tenants(),
-          Notifications()
+          TenantList(),
+          // Notifications()
         ],
         index: _currentIndex,
       ),
@@ -43,10 +44,10 @@ class _HomeState extends State<Home> {
               icon: FaIcon(FontAwesomeIcons.rectangleList,color: Colors.brown,),
               label: "Tenants"
           ),
-          BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.clock,color: Colors.brown,),
-              label: "Notifications"
-          ),
+          // BottomNavigationBarItem(
+          //     icon: FaIcon(FontAwesomeIcons.clock,color: Colors.brown,),
+          //     label: "Notifications"
+          // ),
 
         ],
       ),

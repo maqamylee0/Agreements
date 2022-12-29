@@ -42,4 +42,17 @@ class TenantModel {
 
     };
   }
+   factory TenantModel.fromJson(Map<String, dynamic> map) {
+    return TenantModel(
+        landlordUid: map['landlordUid'],nin: map['nin'],
+        name: map['name'],
+        phone: map['phone'],
+        email: map['email'],
+        nextOfKin: map['nextOfKin'],
+        emergencyPhone: map['emergencyPhone'],
+        previousLandLordPhone: map['previousLandLordPhone'],
+        currentEmployerPhone: map['currentEmployerPhone'],
+
+    );
+  }
 }

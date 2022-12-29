@@ -12,6 +12,8 @@ import 'package:tenant_bureau/views/reset.dart';
 import 'package:tenant_bureau/views/verifyEmail.dart';
 
 import '../../main.dart';
+import '../dashboard/home/Tenants.dart';
+import '../dashboard/home/addTenant/models/tenant.dart';
 import '../dashboard/home/home.dart';
 
 class Auth{
@@ -157,5 +159,29 @@ class Auth{
     // navigatorKey.currentState!.popUntil((route)=>route.);
     print(doc['nin']);
     return doc;
+  }
+
+  Future<List<TenantModel>> getAllTenants(query) async {
+  List<TenantModel> listOfTenants = [];
+    try{
+      FirebaseFirestore mFirebaseFirestore = FirebaseFirestore.instance;
+
+      await mFirebaseFirestore.collection('tenants')
+          .where('landlordUid', isEqualTo: query)
+          .get()
+          .then((snapshot) {
+            snapshot.docs.forEach((element) {
+              TenantModel tenants = TenantModel.fromJson(Map<String, dynamic>.from(element.data()));
+               listOfTenants.add(tenants);
+            });
+        // listOfTenants = snapshot.docs. ;
+      });
+
+    } catch (e) {
+      print(e);
+    }
+    // navigatorKey.currentState!.popUntil((route)=>route.);
+    // print(doc['nin']);
+    return listOfTenants;
   }
 }

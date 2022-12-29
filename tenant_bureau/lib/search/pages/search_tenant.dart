@@ -31,33 +31,34 @@ class _SearchTenantState extends State<SearchTenant> {
         ),
         title: Text("Search Tenant"),
       ),
-      body: Container(
-        padding: EdgeInsets.all(30),
-        child: Column(
-          children: [
-            SizedBox(height: 50,),
-            Container(
-              child: TextFormField(
-                controller: searchController,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (password)=>
-                password != null  ?  null:"Enter a search term",
-                style: const TextStyle(),
-                decoration: InputDecoration(
-                    fillColor: Colors.grey.shade100,
-                    filled: true,
-                    hintText: "search",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    )),
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(30),
+          child: Column(
+            children: [
+              SizedBox(height: 50,),
+              Container(
+                child: TextFormField(
+                  controller: searchController,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (password)=>
+                  password != null  ?  null:"Enter a search term",
+                  style: const TextStyle(),
+                  decoration: InputDecoration(
+                      fillColor: Colors.grey.shade100,
+                      filled: true,
+                      hintText: "search",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      )),
+                ),
+
               ),
+              SizedBox(height: 10,),
+              ElevatedButton(
 
-            ),
-            SizedBox(height: 10,),
-            ElevatedButton(
-
-              child: Text("Search",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
-              onPressed: ()  async {
+                child: Text("Search",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
+                onPressed: ()  async {
 
 
 
@@ -65,31 +66,32 @@ setState(() async {
   data = await  auth.getTenant(context ,searchController.text);
   searched = true;
 });
-                 // data2 = data as Map;
-                if (kDebugMode) {
-                  print(data!['nin']);
-                  // print()
+                   // data2 = data as Map;
+                  if (kDebugMode) {
+                    print(data!['nin']);
+                    // print()
 
-                }
-                // auth.signIn(context, emailController.text, passwordController.text)
-              },
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size.fromHeight(60),
-                primary: Colors.brown[700],
-                onPrimary: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+                  }
+                  // auth.signIn(context, emailController.text, passwordController.text)
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size.fromHeight(60),
+                  primary: Colors.brown[700],
+                  onPrimary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                 ),
               ),
-            ),
 
-            Expanded(
-              child: Container(
-                child: searched ? Text("${data['nin']}") : Text("hi"),
-              ),
+              Expanded(
+                child: Container(
+                  child: searched ? Text("${data['nin']}") : Text("hi"),
+                ),
 
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
