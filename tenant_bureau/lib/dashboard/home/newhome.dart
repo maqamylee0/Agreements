@@ -1,17 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../search/pages/search_tenant.dart';
 import 'addTenant/add_tenant.dart';
 
 class NewHome extends StatefulWidget {
-  const NewHome({Key? key}) : super(key: key);
+  const NewHome({Key? key, }) : super(key: key);
 
   @override
   State<NewHome> createState() => _NewHomeState();
 }
 
 class _NewHomeState extends State<NewHome> {
+  var timeNow;
+  var message = '';
+  @override
+  void initState() {
+    super.initState();
+    DateTime now = DateTime.now();
+  timeNow =  int.parse(DateFormat('kk').format(now));
+  if(timeNow <= 12){
+    message = "Good Morining Dear,\n ";
+  } else if((timeNow > 12) && (timeNow <= 16)) {
+    message = "Good Afternoon,\n ";
+  }else if ((timeNow > 16) && (timeNow < 20)){
+    message = "Good Evevning,\n ";
+    } else {
+   message = "Good Night, \n ";
+    }
+  }
+  Stream<String> getUserName () async* {
+    var prefs = await SharedPreferences.getInstance();
+    var name = await prefs.getString('username');
+    yield name!;
+
+  }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +52,32 @@ class _NewHomeState extends State<NewHome> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 50,),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-            child: Text("DASHBOARD",style: TextStyle(color:Colors.white,fontWeight: FontWeight.w600,fontSize: 30),),
+          StreamBuilder<String>(
+            stream: getUserName(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              } else if (snapshot.connectionState == ConnectionState.active
+                  || snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasError) {
+                  return const Text('Error');
+                } else if (snapshot.hasData) {
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                    child: Text("${message + snapshot.data.toString().toUpperCase()}",style: TextStyle(color:Colors.white,fontWeight: FontWeight.w600,fontSize: 26),),
+                  );
+
+                } else {
+                  return const Text('Empty data');
+                }
+              } else {
+                return Text('State: ${snapshot.connectionState}');
+              }
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                child: Text("$message",style: TextStyle(color:Colors.white,fontWeight: FontWeight.w600,fontSize: 26),),
+              );
+            }
           ),
           Container(
             padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
@@ -142,7 +193,6 @@ class _NewHomeState extends State<NewHome> {
                                     padding: EdgeInsets.all(8.0),
                                     child: Icon(Icons.account_box,size: 50,color: Colors.brown,),
                                   ),
-                                  SizedBox(height: 20,),
                                   Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Text("Tenants",style: TextStyle(fontWeight: FontWeight.bold)),
@@ -168,7 +218,6 @@ class _NewHomeState extends State<NewHome> {
                                     padding: EdgeInsets.all(8.0),
                                     child: Icon(Icons.account_box,size: 50,color: Colors.brown),
                                   ),
-                                  SizedBox(height: 20,),
                                   Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Text("Agreements",style: TextStyle(fontWeight: FontWeight.bold)),
@@ -193,7 +242,6 @@ class _NewHomeState extends State<NewHome> {
                                     padding: EdgeInsets.all(8.0),
                                     child: Icon(Icons.account_box,size: 50,color: Colors.brown),
                                   ),
-                                  SizedBox(height: 20,),
                                   Padding(
                                     padding: EdgeInsets.all(3.0),
                                     child: Text("Pending",style: TextStyle(fontWeight: FontWeight.bold)),
@@ -218,7 +266,6 @@ class _NewHomeState extends State<NewHome> {
                                     padding: EdgeInsets.all(8.0),
                                     child:Icon(Icons.account_box,size: 50,color: Colors.brown),
                                   ),
-                                  SizedBox(height: 20,),
                                   Padding(
                                     padding: EdgeInsets.all(3.0),
                                     child: Text("Sent",style: TextStyle(fontWeight: FontWeight.bold),),

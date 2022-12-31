@@ -2,9 +2,11 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tenant_bureau/dashboard/home/newhome.dart';
 import 'package:tenant_bureau/views/home.dart';
 import 'package:tenant_bureau/views/register.dart';
+// import '../dashboard/home/home.dart';
 import '../dashboard/home/home.dart';
 import '../services/auth.dart';
 // import 'Utils.dart';
@@ -19,16 +21,34 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  var name;
+  @override
+  void initState()  {
+    super.initState();
+     getUserName();
+
+  }
   @override
   Widget build(BuildContext context) {
-    return  StreamBuilder<User?>(
+    return
+      StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder:(context, snapshot){
           if(snapshot.hasData){
-            return const NewHome();
+
+            return  Home();
           }else{
             return const Log();
           }});
+  }
+
+  Future<String> getUserName() async {
+    Auth auth = Auth();
+    setState(() async {
+      name = await auth.getUserName();
+
+    });
+    return name;
   }
 }
 class Log extends StatefulWidget {

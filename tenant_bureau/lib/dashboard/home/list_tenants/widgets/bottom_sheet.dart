@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/dashboard/home/addTenant/models/tenant.dart';
+import 'package:tenant_bureau/dashboard/home/list_tenants/tenant_list.dart';
 import 'package:tenant_bureau/dashboard/home/list_tenants/widgets/selection.dart';
+
+import '../../../../rating/model/rate_model.dart';
+import '../../../../services/auth.dart';
 
 class BottomRate extends StatefulWidget {
   const BottomRate({Key? key, required this.tenant}) : super(key: key);
@@ -12,16 +17,25 @@ class BottomRate extends StatefulWidget {
 
 class _BottomRateState extends State<BottomRate> {
   int _currentStep = 0;
-  late String selected;
-  List<String> selections = ['Good','Middle','Bad'];
+  late int selected;
+  List<String> selections = ['Bad','Fair','Good'];
+  List<String> selections2 = ['No','Yes'];
+
   GlobalKey<FormState> formKey = new GlobalKey<FormState>();
   TextEditingController commentsController = TextEditingController();
-
+  List<String> sections = ['Neighbourliness','Utilities','Rent','House Maintenance'];
+  RateModel rateModel = RateModel();
+  Auth auth = Auth();
 
   @override
   void initState() {
     super.initState();
-    selected = selections.first;
+    selected = 0;
+    rateModel.neighbourliness=0;
+    rateModel.utility =0;
+    rateModel.rent = 0;
+    rateModel.maintenamnce =0;
+    rateModel.condition = 0;
   }
 
 
@@ -33,7 +47,9 @@ class _BottomRateState extends State<BottomRate> {
 
     continued(){
       _currentStep < 4 ?
-      setState(() => _currentStep += 1): null;
+      setState(() {
+        selected = 0;
+        _currentStep += 1;}) : null;
     }
     cancel(){
       _currentStep > 0 ?
@@ -55,9 +71,7 @@ class _BottomRateState extends State<BottomRate> {
             child: Column(
 
               children: [
-                SizedBox(
-                  height: 50,
-                ),
+
                 Form(
                   key: formKey,
                   child: Container(
@@ -73,14 +87,22 @@ class _BottomRateState extends State<BottomRate> {
 
 
                         Step(
-                          title: new Text('Neighbourliness',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20),),
+                          title: new Text('${sections[0]}',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20),),
                           content: Column(
                             children: <Widget>[
                              Container(
                                child: Column(
                                  children: [
-                                   Text("How was the tenants behaviour with neighbours?",style: TextStyle(fontWeight: FontWeight.w600)),
-                                   Select(selections: selections,selected: selected,)
+                                   Text("How was the tenant's behaviour with the neighbours?",style: TextStyle(fontWeight: FontWeight.w600)),
+                                   Select(selections: selections,selected: selected,onChanged: (s){
+                                   setState(() {
+                                     selected = s!;
+                                     if (kDebugMode) {
+                                       print(s);
+                                     }
+                                     rateModel.neighbourliness = s;
+                                   });
+                                   },)
                                  ],
                                ),
                              )
@@ -93,7 +115,7 @@ class _BottomRateState extends State<BottomRate> {
                           StepState.complete : StepState.disabled,
                         ),
                         Step(
-                          title: new Text('Utilities',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20)),
+                          title: new Text('${sections[1]}',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 20)),
                           content: Column(
                             children: <Widget>[
 
@@ -101,7 +123,15 @@ class _BottomRateState extends State<BottomRate> {
                                 child: Column(
                                   children: [
                                     Text("Payment of water bills ,electricity bills ?",style: TextStyle(fontWeight: FontWeight.w600)),
-                                    Select(selections: selections,selected: selected,)
+                                    Select(selections: selections,selected: selected, onChanged: (s){
+                                     setState(() {
+                                       selected = s!;
+                                       if (kDebugMode) {
+                                         print(s);
+                                       }
+                                       rateModel.utility = s;
+                                     });
+                                    },)
                                   ],
                                 ),
                               )
@@ -114,7 +144,7 @@ class _BottomRateState extends State<BottomRate> {
                         ),
 
                         Step(
-                          title: new Text('Rent',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
+                          title: new Text('${sections[2]}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
                           content: Column(
                             children: <Widget>[
 
@@ -122,7 +152,15 @@ class _BottomRateState extends State<BottomRate> {
                                 child: Column(
                                   children: [
                                     Text("Payment of rent?",style: TextStyle(fontWeight: FontWeight.w600)),
-                                    Select(selections: selections,selected: selected,)
+                                    Select(selections: selections,selected: selected, onChanged: (s){
+                                     setState(() {
+                                       selected = s!;
+                                       if (kDebugMode) {
+                                         print(s);
+                                       }
+                                       rateModel.rent = s;
+                                     });
+                                    },)
                                   ],
                                 ),
                               )
@@ -134,15 +172,24 @@ class _BottomRateState extends State<BottomRate> {
                           StepState.complete : StepState.disabled,
                         ),
                         Step(
-                          title: new Text('House Maintenance',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
+                          title: new Text('${sections[3]}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
                           content: Column(
                             children: <Widget>[
 
                               Container(
                                 child: Column(
                                   children: [
-                                    Text("How was the condition of the house?",style: TextStyle(fontWeight: FontWeight.w600)),
-                                    Select(selections: selections,selected: selected,)
+                                    Text("In what state did the tenant leave the house?",style: TextStyle(fontWeight: FontWeight.w600)),
+                                    Select(selections: selections,selected: selected, onChanged: (s){
+                                      setState((){
+                                        selected = s!;
+                                        if (kDebugMode) {
+                                          print(s);
+                                        }
+                                        rateModel.maintenamnce = s;
+                                      });
+
+                                    },)
                                   ],
                                 ),
                               )
@@ -161,7 +208,16 @@ class _BottomRateState extends State<BottomRate> {
                                 child: Column(
                                   children: [
                                     Text("Would you take them in again?",style: TextStyle(fontWeight: FontWeight.w600)),
-                                    Select(selections: selections,selected: selected,)
+                                    Select(selections: selections2,selected: selected, onChanged: (s){
+                                      setState((){
+                                        selected = s!;
+                                        if (kDebugMode) {
+                                          print(s);
+                                        }
+                                        rateModel.condition = s;
+                                      });
+
+                                    },)
                                   ],
                                 ),
                               ),
@@ -169,6 +225,7 @@ class _BottomRateState extends State<BottomRate> {
                                 child: Column(
                                   children: [
                                     Container(
+                                      padding: EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                     border:Border.all(color: Colors.brown)
                                 ),
@@ -199,35 +256,71 @@ class _BottomRateState extends State<BottomRate> {
                     ),
                   ),
                 ),
-                ElevatedButton(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      child: ElevatedButton(
 
-                  child: Text("Save",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
-                  onPressed: () => {
-                    // if (formKey.currentState!.validate()) {
-                    //   formKey.currentState?.save(),
-
-                    // saveDetails(context);
-                    Navigator.pop(context)
-                    // }else{
-
-                    // print('valid');
-                    // TenantModel tenant = TenantModel();
+                        child: Text("Save",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 15),),
+                        onPressed: () async => {
+                           rateModel.comments = commentsController.text,
 
 
-                    // print(tenant.name)
+                           await auth.sendRating(rateModel,widget.tenant,context),
+                          // if (formKey.currentState!.validate()) {
+                          //   formKey.currentState?.save(),
+                          Navigator.pop(context),
 
-                    //   }
+                          // saveDetails(context);
+                          // }else{
 
-                    // auth.signIn(context, emailController.text, passwordController.text)
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size.fromHeight(60),
-                    primary: Colors.brown[700],
-                    onPrimary: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                          // print('valid');
+                          // TenantModel tenant = TenantModel();
+
+
+                          // print(tenant.name)
+
+                          //   }
+
+                          // auth.signIn(context, emailController.text, passwordController.text)
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size.fromHeight(30),
+                          primary: Colors.brown[700],
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    SizedBox(
+                      width: 100,
+                      child: ElevatedButton(
+
+                        child: Text("Cancel",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 15),),
+                        onPressed: () async => {
+                          Navigator.pop(context),
+
+                          // MaterialPageRoute(builder: (context) {
+                          //   return TenantList();
+                          // }),
+
+                          // auth.signIn(context, emailController.text, passwordController.text)
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size.fromHeight(30),
+                          primary: Colors.brown[700],
+                          onPrimary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -19,24 +19,24 @@ class _TenantButtonState extends State<TenantButton> {
 
       style: ButtonStyle(
 
-        minimumSize: MaterialStateProperty.all(Size(150, 35)),
-        padding:  MaterialStateProperty.all(EdgeInsets.fromLTRB(12, 5, 12, 5)),
+        // minimumSize: MaterialStateProperty.all(Size(150, 20)),
+        // padding:  MaterialStateProperty.all(EdgeInsets.fromLTRB(12, 5, 12, 5)),
         backgroundColor: MaterialStateProperty.all<Color>(Colors.brown),
 
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
 
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14.0),
+            borderRadius: BorderRadius.circular(8.0),
 
           ),
 
         ),
-        side: MaterialStateBorderSide.resolveWith((Set<MaterialState> states) {
-          {
-            return const BorderSide(color: Colors.grey);
-          }
-          return null; // Defer to default value on the theme or widget.
-        }),
+        // side: MaterialStateBorderSide.resolveWith((Set<MaterialState> states) {
+        //   {
+        //     return const BorderSide(color: Colors.grey);
+        //   }
+        //   return null; // Defer to default value on the theme or widget.
+        // }),
         // shadowColor:MaterialStateProperty.all<Color>(Color.fromRGBO(8, 143, 129, 0.4)) ,
         // elevation: MaterialStateProperty.all<double>(20),
       ),

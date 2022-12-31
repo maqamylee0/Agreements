@@ -3,13 +3,14 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tenant_bureau/dashboard/home/home.dart';
 import 'package:tenant_bureau/views/login.dart';
 
 import 'Utils.dart';
 
 class VerifyEmailPage extends StatefulWidget {
-  const VerifyEmailPage({Key? key}) : super(key: key);
-
+  const VerifyEmailPage({Key? key, required this.name}) : super(key: key);
+ final String name;
   @override
   State<VerifyEmailPage> createState() => _VerifyEmailPageState();
 }
@@ -42,7 +43,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   }
   @override
   Widget build(BuildContext context) =>
-      isVerified ? const MyLogin() :
+      isVerified ?  Home() :
 
          Scaffold(
          backgroundColor: Colors.white,

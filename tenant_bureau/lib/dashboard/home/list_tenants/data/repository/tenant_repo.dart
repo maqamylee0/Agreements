@@ -10,7 +10,7 @@ class TenantRepository{
   Future<List<TenantModel>> getAllTenants () async {
     final prefs =  await SharedPreferences.getInstance();
     final String? landlorduid =  await prefs.getString('userid');
-    return apiservice.getAllTenants("oavVaYkPgzXiu7mWBK0HyD9ylf23");
+    return apiservice.getAllTenants("$landlorduid");
   }
 
 }

@@ -15,33 +15,32 @@ class _TenantCardState extends State<TenantCard> {
   Widget build(BuildContext context) {
     print(widget.tenant.previousLandLordPhone);
     return Container(
-      child:Container(
-        child: Column(
-        children: [
-        Row(
-        children: [
-        Container(
-        margin: EdgeInsets.all(10),
+      child:Column(
+      children: [
+      Row(
+      children: [
+      Container(
     decoration: BoxDecoration(
-    image: DecorationImage(image: AssetImage("personimage/emily.jpg"), fit: BoxFit.cover),
+    image: DecorationImage(image: AssetImage("assets/emily.jpg"), fit: BoxFit.cover),
     borderRadius: BorderRadius.circular(10)
     ),
-    height: 120,
-    width: 115,
+    height: 105,
+    width: 90,
 
     ),
+    SizedBox(width: 10,),
     Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
     Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.fromLTRB(2, 10, 2, 2),
     child: Text("${widget.tenant.name}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
     ),
     Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.all(1.0),
     child: Text('${widget.tenant.email}',style: TextStyle(color: Colors.grey),),
     ),
-    SizedBox(height: 20,), TenantButton(tenant: widget.tenant,),
+    SizedBox(height: 5,), TenantButton(tenant: widget.tenant,),
 
 
     ],
@@ -49,9 +48,6 @@ class _TenantCardState extends State<TenantCard> {
     ],
     )
     ],
-    ),
-
-
     ),
 
     );

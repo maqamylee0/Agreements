@@ -26,14 +26,15 @@ class _MyRegisterState extends State<MyRegister> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-        builder:(context, snapshot){
-        if(snapshot.hasData){
-          return const VerifyEmailPage();
-        }else{
-        return const Reg();
-        }});
+    return Reg();
+      // StreamBuilder<User?>(
+      // stream: FirebaseAuth.instance.authStateChanges(),
+      //   builder:(context, snapshot){
+      //   if(snapshot.hasData){
+      //     return const VerifyEmailPage(name: '${userModel.name}',);
+      //   }else{
+      //   return const Reg();
+      //   }});
   }
 
 }

@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tenant_bureau/dashboard/home/addTenant/services/add_tenant_service.dart';
@@ -252,10 +253,13 @@ class _AddTenantState extends State<AddTenant> {
     tenant.previousLandLordPhone= previousLandLordPhoneController.text;
     tenant.currentEmployerPhone = currentEmployerPhoneController.text;
 
-    print(tenant.name);
-    print(nameController.value.text);
-    print('hi');
-    print(userid);
+    if (kDebugMode) {
+      print(tenant.name);
+      print(nameController.value.text);
+      print('hi');
+      print(userid);
+    }
+
 
     AddTenantMethod addtenant = AddTenantMethod();
     addtenant.addTenants(context,tenant);

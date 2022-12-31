@@ -9,14 +9,15 @@ import 'newhome.dart';
 import 'notifications.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
+  const Home( {Key? key,}) : super(key: key);
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,9 @@ class _HomeState extends State<Home> {
       body: IndexedStack(
         children: [
           NewHome(),
+
           TenantList(),
+
           // Notifications()
         ],
         index: _currentIndex,

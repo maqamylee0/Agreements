@@ -51,18 +51,28 @@ class _TenantListState extends State<TenantList> {
 
 
     return Scaffold(
+        appBar: AppBar(
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back, color: Colors.black),
+          //   onPressed: () => Navigator.of(context).pop(),
+          // ),
+          title: Text("Tenants"),
+        ),
       body: listOfTenants.isEmpty ?
-          Center(child: CircularProgressIndicator()):
+          Center(
+            child:Text("No Tenants Yet")
+          ):
       SafeArea(
         child: Container(
           padding: EdgeInsets.all(20),
           child: Column(
             children: [
-              SizedBox(
-                height: 50,
-              ),
+              // SizedBox(
+              //   height: 50,
+              // ),
 
               Container(
+                height: MediaQuery.of(context).size.height*0.1,
                 child: TextField(
                   controller: search2Controller,
                   // autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -81,12 +91,10 @@ class _TenantListState extends State<TenantList> {
                 ),
 
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Container(
+
+              Expanded(
                 // padding: EdgeInsets.all(30),
-                height: MediaQuery.of(context).size.height*0.6,
+                // height: MediaQuery.of(context).size.height*0.6,
                   child: ListView.builder(
 
                       physics: ScrollPhysics(),

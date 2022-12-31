@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/dashboard/home/addTenant/models/tenant.dart';
+import 'package:tenant_bureau/rating/model/rate_model.dart';
+import 'package:tenant_bureau/search/pages/widgets/rated_widget.dart';
 
 import '../../services/auth.dart';
 
@@ -15,7 +17,7 @@ class SearchTenant extends StatefulWidget {
 
 class _SearchTenantState extends State<SearchTenant> {
   final searchController = TextEditingController();
-  late Map<dynamic, dynamic> data;
+  late List<RateModel> data;
   bool searched = false;
 
   Auth auth = Auth();
@@ -33,10 +35,9 @@ class _SearchTenantState extends State<SearchTenant> {
       ),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.all(10),
           child: Column(
             children: [
-              SizedBox(height: 50,),
               Container(
                 child: TextFormField(
                   controller: searchController,
@@ -59,16 +60,14 @@ class _SearchTenantState extends State<SearchTenant> {
 
                 child: Text("Search",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
                 onPressed: ()  async {
+                  data = await  auth.getAllTenantRates(searchController.text);
 
-
-
-setState(() async {
-  data = await  auth.getTenant(context ,searchController.text);
-  searched = true;
-});
+                    setState(()  {
+                        searched = true;
+                           });
                    // data2 = data as Map;
                   if (kDebugMode) {
-                    print(data!['nin']);
+                    // print(data!['nin']);
                     // print()
 
                   }
@@ -86,7 +85,21 @@ setState(() async {
 
               Expanded(
                 child: Container(
-                  child: searched ? Text("${data['nin']}") : Text("hi"),
+                  child: searched ? Container(
+                    // padding: EdgeInsets.all(30),
+                      height: MediaQuery.of(context).size.height*0.6,
+                      child: ListView.builder(
+
+                          physics: ScrollPhysics(),
+                          // shrinkWrap: true,
+                          itemCount:data.length,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (context,index){
+
+                            return Rated(rate : data[index]);
+                          })
+                  )
+                   : Text("Search a tenant by entering their nin"),
                 ),
 
               )

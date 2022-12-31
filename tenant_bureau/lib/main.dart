@@ -22,10 +22,10 @@ Future main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    // MyApp());
-      DevicePreview(
-        builder: (BuildContext context) => const MyApp(),
-      ));
+    MyApp());
+    //   DevicePreview(
+    //     builder: (BuildContext context) => const MyApp(),
+    //   ));
 }
 
 class MyApp extends StatelessWidget {
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         home:
-        Home(),
+        MyLogin(),
         routes: {
           'register': (context) => const MyRegister(),
           'login': (context) => const MyLogin(),
