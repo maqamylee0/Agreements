@@ -64,7 +64,7 @@ class _NewHomeState extends State<NewHome> {
                 } else if (snapshot.hasData) {
                   return Padding(
                     padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                    child: Text("${message + snapshot.data.toString().toUpperCase()}",style: TextStyle(color:Colors.white,fontWeight: FontWeight.w600,fontSize: 26),),
+                    child: Text("${message + snapshot.data.toString()}",style: TextStyle(color:Colors.white,fontWeight: FontWeight.w600,fontSize: 26),),
                   );
 
                 } else {

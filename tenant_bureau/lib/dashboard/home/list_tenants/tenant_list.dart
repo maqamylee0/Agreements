@@ -52,12 +52,8 @@ class _TenantListState extends State<TenantList> {
 
     return Scaffold(
         appBar: AppBar(
-          // leading: IconButton(
-          //   icon: Icon(Icons.arrow_back, color: Colors.black),
-          //   onPressed: () => Navigator.of(context).pop(),
-          // ),
           title: Text("Tenants"),
-        ),
+       ),
       body: listOfTenants.isEmpty ?
           Center(
             child:Text("No Tenants Yet")
