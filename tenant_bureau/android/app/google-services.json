@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:711223055888:android:39862f0a612fa03c9d9c95",
         "android_client_info": {
-          "package_name": "com.example.tenant_bureau"
+          "package_name": "com.tenant_bureau"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "711223055888-gost2c4sdq92l760nnmit7k1ameamn69.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.tenant_bureau",
+            "package_name": "com.tenant_bureau",
             "certificate_hash": "43734e2b4bc2b7b154261041b8ae8e31006384b8"
           }
         },

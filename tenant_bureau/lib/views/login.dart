@@ -64,6 +64,7 @@ class _LogState extends State<Log> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   Auth auth = Auth();
+  var _passwordVisible;
 
   @override
   void dispose(){
@@ -72,6 +73,10 @@ class _LogState extends State<Log> {
 
 
     super.dispose();
+  }
+  @override
+  void initState() {
+    _passwordVisible = false;
   }
   @override
   Widget build(BuildContext context) {
@@ -130,14 +135,33 @@ class _LogState extends State<Log> {
                   validator: (password)=>
                   password != null && password.length > 6  ?  null:"Enter a minimum of 6 characters",
                   style: const TextStyle(),
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      fillColor: Colors.grey.shade100,
-                      filled: true,
-                      hintText: "Password",
-                      border: OutlineInputBorder(
+                  obscureText: !_passwordVisible, //
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                      )),
+                        borderSide: const BorderSide(
+                          color: Colors.black,
+                        ),
+                      ),
+                      labelText: 'Password',
+                      hintText: 'Enter your password',
+                      // Here is key idea
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          // Based on passwordVisible state choose the icon
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off_outlined,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          // Update the state i.e. toogle the state of passwordVisible variable
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
+                      ),
+                    ),
                 ),
                 const SizedBox(
                   height: 40,

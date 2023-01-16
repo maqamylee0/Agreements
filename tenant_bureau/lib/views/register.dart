@@ -57,6 +57,7 @@ class _RegState extends State<Reg> {
   final nameController = TextEditingController();
   final ninController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  var _passwordVisible;
 
   // @override
   // void initState(){
@@ -73,7 +74,10 @@ class _RegState extends State<Reg> {
 
     super.dispose();
   }
-
+  @override
+  void initState() {
+    _passwordVisible = false;
+  }
     @override
   Widget build(BuildContext context) {
     return Container(
@@ -210,8 +214,23 @@ class _RegState extends State<Reg> {
                               validator: (value)=>
                               value != null && value.length > 6 ? null: "Password must be more than 6 characters",
                               style: const TextStyle(color: Colors.black),
-                              obscureText: true,
+                              obscureText: !_passwordVisible, //
                               decoration: InputDecoration(
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      // Based on passwordVisible state choose the icon
+                                      _passwordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off_outlined,
+                                      color: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      // Update the state i.e. toogle the state of passwordVisible variable
+                                      setState(() {
+                                        _passwordVisible = !_passwordVisible;
+                                      });
+                                    },
+                                  ),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: const BorderSide(
@@ -229,6 +248,11 @@ class _RegState extends State<Reg> {
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   )),
+
+
+
+
+
                             ),
                             const SizedBox(
                               height: 20,

@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,10 +24,11 @@ Future main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    MyApp());
+    // MyApp());
     //   DevicePreview(
-    //     builder: (BuildContext context) => const MyApp(),
-    //   ));
+    //     builder: (BuildContext context) =>
+        const MyApp());
+      // ));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,6 +36,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+
     return BlocProvider(
       create: (context) => TenantBloc(),
       child: MaterialApp(
@@ -44,8 +49,7 @@ class MyApp extends StatelessWidget {
         scaffoldMessengerKey: Utils.messengerKey,
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
-        home:
-        MyLogin(),
+        home: auth.currentUser != null ? Home() : Welcome(),
         routes: {
           'register': (context) => const MyRegister(),
           'login': (context) => const MyLogin(),

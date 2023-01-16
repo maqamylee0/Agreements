@@ -60,7 +60,7 @@ class _NewHomeState extends State<NewHome> {
               } else if (snapshot.connectionState == ConnectionState.active
                   || snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasError) {
-                  return const Text('Error');
+                  return const Text('Good Morning \n,',style: TextStyle(color:Colors.white,fontWeight: FontWeight.w600,fontSize: 26));
                 } else if (snapshot.hasData) {
                   return Padding(
                     padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),

@@ -57,8 +57,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                child: Column(
                  children: [
                    SizedBox(height: 100,),
-                   const Text("A verification email has been sent to your email" ,
-                       style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600,)),
+                   const Text("A verification email has been sent to your email\n"
+                       "Check your spam if you cannot find it " ,
+                       style: TextStyle(fontSize: 27,fontWeight: FontWeight.w600,)),
                   SizedBox(height: 30,),
                    ElevatedButton.icon(style:ElevatedButton.styleFrom(
                        primary: Colors.brown[700],

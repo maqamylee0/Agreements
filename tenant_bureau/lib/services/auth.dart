@@ -153,7 +153,7 @@ class Auth{
     print(name);
     return name;
   }
-  Future<List<RateModel>> getTenant(context, query) async {
+  Future<List<RateModel>> getTenant(query) async {
     late Map<dynamic, dynamic> doc ;
     List<RateModel> listOfRates = [];    // showDialog(context: context,barrierDismissible: false,
     //     builder: (context) => const Center(child: CircularProgressIndicator()));
