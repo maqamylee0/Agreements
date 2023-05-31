@@ -3,6 +3,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/views/register.dart';
+import '../utils.dart';
 import 'Utils.dart';
 import 'login.dart';
 import '../main.dart';
@@ -71,7 +72,7 @@ class _ResetState extends State<Reset> {
                       padding: EdgeInsets.only(left: 35, top: 130),
                       child: Text(
                         'Reset\nPassword',
-                        style: TextStyle(color: Colors.brown, fontSize: 33),
+                        style: TextStyle(color: Statics.thirdColor, fontSize: 33),
                       ),
                     ),
                     SizedBox(
@@ -111,7 +112,7 @@ class _ResetState extends State<Reset> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   minimumSize: Size.fromHeight(60),
-                                  primary: Colors.brown[700],
+                                  primary: Statics.thirdColor,
                                   onPrimary: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),

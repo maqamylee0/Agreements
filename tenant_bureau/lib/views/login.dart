@@ -9,6 +9,7 @@ import 'package:tenant_bureau/views/register.dart';
 // import '../dashboard/home/home.dart';
 import '../dashboard/home/home.dart';
 import '../services/auth.dart';
+import '../utils.dart';
 // import 'Utils.dart';
 // import '../main.dart';
 
@@ -99,9 +100,9 @@ class _LogState extends State<Log> {
         children: [
           Container(
             padding: const EdgeInsets.all(60),
-            child: const Text(
+            child:  Text(
               'Welcome\nBack',
-              style: TextStyle(color: Colors.brown, fontSize: 30,fontWeight: FontWeight.bold),
+              style: TextStyle(color: Statics.thirdColor, fontSize: 30,fontWeight: FontWeight.bold),
             ),
           ),
           Container(
@@ -174,7 +175,7 @@ class _LogState extends State<Log> {
                   },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size.fromHeight(60),
-                    primary: Colors.brown[700],
+                    primary: Statics.thirdColor,
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),

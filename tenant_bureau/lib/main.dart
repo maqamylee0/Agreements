@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tenant_bureau/blocs/tenant_bloc/tenant_bloc.dart';
 import 'package:tenant_bureau/dashboard/home/newhome.dart';
+import 'package:tenant_bureau/utils.dart';
 import 'package:tenant_bureau/views/register.dart';
 import 'package:tenant_bureau/views/reset.dart';
 import 'package:tenant_bureau/views/verifyEmail.dart';
@@ -43,7 +44,16 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
             fontFamily: 'Manrope',
-            primarySwatch: Colors.brown
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+
+              primary: Statics.thirdColor,
+              secondary: Statics.secondaryColor,
+
+
+
+
+            ),
+            // primarySwatch:Colors.blue.shade900
 
         ),
         scaffoldMessengerKey: Utils.messengerKey,

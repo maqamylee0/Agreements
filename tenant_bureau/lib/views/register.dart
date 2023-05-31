@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tenant_bureau/views/verifyEmail.dart';
 
 import '../services/auth.dart';
+import '../utils.dart';
 import 'Utils.dart';
 import 'login.dart';
 import '../main.dart';
@@ -263,7 +264,7 @@ class _RegState extends State<Reg> {
                               onPressed: () {onPressed();},
                               style: ElevatedButton.styleFrom(
                                 minimumSize: Size.fromHeight(60),
-                                primary: Colors.brown[700],
+                                primary: Statics.thirdColor,
                                 onPrimary: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0),

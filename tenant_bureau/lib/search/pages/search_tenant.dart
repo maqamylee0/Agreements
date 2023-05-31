@@ -7,6 +7,7 @@ import 'package:tenant_bureau/rating/model/rate_model.dart';
 import 'package:tenant_bureau/search/pages/widgets/rated_widget.dart';
 
 import '../../services/auth.dart';
+import '../../utils.dart';
 
 class SearchTenant extends StatefulWidget {
   const SearchTenant({Key? key}) : super(key: key);
@@ -76,7 +77,7 @@ class _SearchTenantState extends State<SearchTenant> {
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size.fromHeight(60),
-                  primary: Colors.brown[700],
+                  primary: Statics.thirdColor,
                   onPrimary: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),

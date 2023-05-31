@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:tenant_bureau/dashboard/home/home.dart';
 import 'package:tenant_bureau/views/login.dart';
 
+import '../utils.dart';
 import 'Utils.dart';
 
 class VerifyEmailPage extends StatefulWidget {
@@ -62,7 +63,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                        style: TextStyle(fontSize: 27,fontWeight: FontWeight.w600,)),
                   SizedBox(height: 30,),
                    ElevatedButton.icon(style:ElevatedButton.styleFrom(
-                       primary: Colors.brown[700],
+                       primary: Statics.thirdColor,
                      minimumSize: Size.fromHeight(60),),
                      icon: const Icon(Icons.email,size: 32),
                      label: const Text("Resend Email",
@@ -74,7 +75,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                      height: 30,
                    ),
                    ElevatedButton.icon(style:ElevatedButton.styleFrom(
-                     primary: Colors.brown[700],
+                     primary: Statics.thirdColor,
                      minimumSize: Size.fromHeight(60),),
                        icon: Icon(Icons.email,size: 32),
                        label: const Text("Cancel",

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tenant_bureau/dashboard/home/addTenant/services/add_tenant_service.dart';
 
+import '../../../utils.dart';
 import 'models/tenant.dart';
 
 class AddTenant extends StatefulWidget {
@@ -221,7 +222,7 @@ class _AddTenantState extends State<AddTenant> {
                          },
                          style: ElevatedButton.styleFrom(
                            minimumSize: Size.fromHeight(60),
-                           primary: Colors.brown[700],
+                           primary: Statics.thirdColor,
                            onPrimary: Colors.white,
                            shape: RoundedRectangleBorder(
                              borderRadius: BorderRadius.circular(8.0),

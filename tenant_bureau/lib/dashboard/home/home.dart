@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tenant_bureau/dashboard/home/list_tenants/tenant_list.dart';
 
+import '../../utils.dart';
 import '../../views/home.dart';
 import 'Tenants.dart';
 import 'newhome.dart';
@@ -40,11 +41,11 @@ class _HomeState extends State<Home> {
         },
         items:  [
           BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.house,color: Colors.brown,),
+              icon: FaIcon(FontAwesomeIcons.house,color: Statics.thirdColor,),
               label: "Home"
           ),
           BottomNavigationBarItem(
-              icon: FaIcon(FontAwesomeIcons.rectangleList,color: Colors.brown,),
+              icon: FaIcon(FontAwesomeIcons.rectangleList,color: Statics.thirdColor,),
               label: "Tenants"
           ),
           // BottomNavigationBarItem(

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../utils.dart';
 import 'login.dart';
 
 class Welcome extends StatelessWidget {
@@ -55,7 +56,7 @@ class Welcome extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size.fromHeight(60),
-                    primary: Colors.brown[700],
+                    primary: Statics.thirdColor,
                     onPrimary: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),

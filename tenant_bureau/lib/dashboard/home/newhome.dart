@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/User.dart';
 import '../../search/pages/search_tenant.dart';
 import '../../services/auth.dart';
+import '../../utils.dart';
 import 'addTenant/add_tenant.dart';
 
 class NewHome extends StatefulWidget {
@@ -66,7 +67,7 @@ class _NewHomeState extends State<NewHome> {
     var totalheight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.brown,
+      backgroundColor: Colors.blue.shade900,
 
       body: SingleChildScrollView(
         child: Container(
@@ -76,7 +77,29 @@ class _NewHomeState extends State<NewHome> {
             children: [
               SizedBox(height: 50,),
               Padding(
-                padding: const EdgeInsets.fromLTRB(10, 20, 10, 40),
+                padding: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.white,
+                      child: SizedBox(
+                        height:50,
+                          width: 100,
+                          child: Image.asset("assets/emily.jpg")),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.grey.shade600,
+                       radius:30,
+                        child: Icon(Icons.notifications_active_sharp,color:Statics.primaryColor,size: 30,)),
+                    // SizedBox(width: 30,),
+                  ],
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 30),
                 child: StreamBuilder<String>(
                   stream: getUserName(),
                   builder: (context, snapshot) {
@@ -112,7 +135,7 @@ class _NewHomeState extends State<NewHome> {
               Container(
                 padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
                 height: totalheight*0.35,
-                color: Colors.brown,
+                color: Colors.blue.shade900,
                 child: Container(
                   // height: MediaQuery.of(context).size.height*0.1,
                   child: Column(
@@ -131,12 +154,12 @@ class _NewHomeState extends State<NewHome> {
                               },
                               style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(Colors.brown),
-                                  backgroundColor:MaterialStateProperty.all<Color>(Colors.amber) ,
+                                  backgroundColor:MaterialStateProperty.all<Color>(Statics.secondaryColor) ,
 
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10.0),
-                                        side:  BorderSide(color: Colors.amber),
+                                        side:  BorderSide(color: Statics.secondaryColor),
 
                                       )
                                   )
@@ -163,12 +186,12 @@ class _NewHomeState extends State<NewHome> {
                               },
                               style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(Colors.brown),
-                                  backgroundColor:MaterialStateProperty.all<Color>(Colors.amber) ,
+                                  backgroundColor:MaterialStateProperty.all<Color>(Statics.secondaryColor) ,
 
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10.0),
-                                        side:  BorderSide(color: Colors.brown),
+                                        side:  BorderSide(color: Statics.secondaryColor),
 
                                       )
                                   )
@@ -195,7 +218,7 @@ class _NewHomeState extends State<NewHome> {
                               },
                               style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(Colors.brown),
-                                  backgroundColor:MaterialStateProperty.all<Color>(Colors.amber) ,
+                                  backgroundColor:MaterialStateProperty.all<Color>(Statics.secondaryColor) ,
 
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
@@ -208,10 +231,10 @@ class _NewHomeState extends State<NewHome> {
 
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
+                                children:  [
 
                                   Icon(Icons.add),
-                                  Text(" ADD  NEW  LISTING",style: TextStyle(fontWeight: FontWeight.w600),)
+                                  Text(" ADD  NEW  LISTING",style: TextStyle(fontWeight: FontWeight.w600,))
                                 ],
                               )
                           )
@@ -225,11 +248,11 @@ class _NewHomeState extends State<NewHome> {
 
                               onPressed:(){
                                 Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) => const AddTenant()));
+                                    MaterialPageRoute(builder: (context) => const SearchTenant()));
                               },
                               style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(Colors.brown),
-                                  backgroundColor:MaterialStateProperty.all<Color>(Colors.amber) ,
+                                  backgroundColor:MaterialStateProperty.all<Color>(Statics.secondaryColor) ,
 
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
@@ -290,11 +313,11 @@ class _NewHomeState extends State<NewHome> {
                                   ),
                                   elevation: 5,
                                   child: Row(
-                                    children: const [
+                                    children:  [
                                       // SizedBox(height: 5,),
                                       Padding(
                                         padding: EdgeInsets.all(8.0),
-                                        child: Icon(Icons.people,size: 50,color: Colors.brown,),
+                                        child: Icon(Icons.people,size: 50,color: Statics.thirdColor,),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(8.0),
@@ -314,11 +337,11 @@ class _NewHomeState extends State<NewHome> {
                                   ),
                                   elevation: 10,
                                   child: Row(
-                                    children: const [
+                                    children:  [
                                       // SizedBox(height: 5,),
                                       Padding(
                                         padding: EdgeInsets.all(8.0),
-                                        child: Icon(Icons.filter_frames_rounded,size: 50,color: Colors.brown),
+                                        child: Icon(Icons.filter_frames_rounded,size: 50,color: Statics.thirdColor),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(8.0),
@@ -338,11 +361,11 @@ class _NewHomeState extends State<NewHome> {
                                   ),
                                   elevation: 10,
                                   child: Row(
-                                    children: const [
+                                    children:  [
                                       SizedBox(height: 5,),
                                       Padding(
                                         padding: EdgeInsets.all(8.0),
-                                        child: Icon(Icons.pending,size: 50,color: Colors.brown),
+                                        child: Icon(Icons.pending,size: 50,color: Statics.thirdColor),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(8.0),
@@ -363,11 +386,11 @@ class _NewHomeState extends State<NewHome> {
                                   ),
                                   elevation: 10,
                                   child: Row(
-                                    children: const [
+                                    children:  [
                                       // SizedBox(height: 5,),
                                        Padding(
                                         padding: EdgeInsets.all(8.0),
-                                        child:Icon(Icons.send_sharp,size: 50,color: Colors.brown),
+                                        child:Icon(Icons.send_sharp,size: 50,color: Statics.thirdColor),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(8.0),
