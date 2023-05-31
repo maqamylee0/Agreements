@@ -108,7 +108,7 @@ class _NewHomeState extends State<NewHome> {
 
           Container(
             padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-            height: totalheight*0.15,
+            height: totalheight*0.35,
             color: Colors.brown,
             child: Container(
               // height: MediaQuery.of(context).size.height*0.1,
@@ -180,6 +180,73 @@ class _NewHomeState extends State<NewHome> {
                           )
                       )
                   ),
+                  SizedBox(
+                      height: 50,
+                      // width: 140,
+                      child:
+                      TextButton(
+
+                          onPressed:(){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => const AddTenant()));
+                          },
+                          style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.brown),
+                              backgroundColor:MaterialStateProperty.all<Color>(Colors.amber) ,
+
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side:  BorderSide(color: Colors.amber),
+
+                                  )
+                              )
+                          ),
+
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+
+                              Icon(Icons.add),
+                              Text(" ADD  NEW  LISTING",style: TextStyle(fontWeight: FontWeight.w600),)
+                            ],
+                          )
+                      )
+                  ),
+
+                  SizedBox(
+                      height: 50,
+                      // width: 140,
+                      child:
+                      TextButton(
+
+                          onPressed:(){
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => const AddTenant()));
+                          },
+                          style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.brown),
+                              backgroundColor:MaterialStateProperty.all<Color>(Colors.amber) ,
+
+                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    side:  BorderSide(color: Colors.amber),
+
+                                  )
+                              )
+                          ),
+
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+
+                              Icon(Icons.search),
+                              Text(" SEARCH LISTINGS",style: TextStyle(fontWeight: FontWeight.w600),)
+                            ],
+                          )
+                      )
+                  ),
 
 
                 ],
@@ -224,7 +291,7 @@ class _NewHomeState extends State<NewHome> {
                                   // SizedBox(height: 5,),
                                   Padding(
                                     padding: EdgeInsets.all(8.0),
-                                    child: Icon(Icons.account_box,size: 50,color: Colors.brown,),
+                                    child: Icon(Icons.people,size: 50,color: Colors.brown,),
                                   ),
                                   Padding(
                                     padding: EdgeInsets.all(8.0),
@@ -248,7 +315,7 @@ class _NewHomeState extends State<NewHome> {
                                   // SizedBox(height: 5,),
                                   Padding(
                                     padding: EdgeInsets.all(8.0),
-                                    child: Icon(Icons.account_box,size: 50,color: Colors.brown),
+                                    child: Icon(Icons.filter_frames_rounded,size: 50,color: Colors.brown),
                                   ),
                                   Padding(
                                     padding: EdgeInsets.all(8.0),
@@ -272,7 +339,7 @@ class _NewHomeState extends State<NewHome> {
                                   SizedBox(height: 5,),
                                   Padding(
                                     padding: EdgeInsets.all(8.0),
-                                    child: Icon(Icons.account_box,size: 50,color: Colors.brown),
+                                    child: Icon(Icons.pending,size: 50,color: Colors.brown),
                                   ),
                                   Padding(
                                     padding: EdgeInsets.all(8.0),
@@ -295,9 +362,9 @@ class _NewHomeState extends State<NewHome> {
                               child: Row(
                                 children: const [
                                   // SizedBox(height: 5,),
-                                  Padding(
+                                   Padding(
                                     padding: EdgeInsets.all(8.0),
-                                    child:Icon(Icons.account_box,size: 50,color: Colors.brown),
+                                    child:Icon(Icons.send_sharp,size: 50,color: Colors.brown),
                                   ),
                                   Padding(
                                     padding: EdgeInsets.all(8.0),
