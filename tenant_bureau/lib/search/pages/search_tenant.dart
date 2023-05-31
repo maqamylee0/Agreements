@@ -60,7 +60,8 @@ class _SearchTenantState extends State<SearchTenant> {
 
                 child: Text("Search",style: TextStyle(fontWeight:FontWeight.bold,fontSize: 20),),
                 onPressed: ()  async {
-                  data = await  auth.getAllTenantRates(searchController.text);
+                  // print("hiiiii ${searchController.text.toUpperCase()}");
+                  data = await  auth.getAllTenantRates(searchController.text.toUpperCase());
 
                     setState(()  {
                         searched = true;

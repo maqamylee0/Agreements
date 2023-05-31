@@ -98,10 +98,10 @@ class _AddTenantState extends State<AddTenant> {
                                         controller: ninController,
                                         autovalidateMode: AutovalidateMode.onUserInteraction,
                                         validator: (value)=>
-                                        value == '' ? "Enter a nin": null,
+                                        (value == '' || value?.length != 14) ? "Enter proper nin": null,
                                         decoration: InputDecoration(labelText: 'Nin'),
                                         onSaved: (String? value) {
-                                          tenant.nin = value;
+                                          tenant.nin = value?.toUpperCase();
                                         },
                                       ),
                                     ],
@@ -245,7 +245,7 @@ class _AddTenantState extends State<AddTenant> {
     var userid =  await prefs.getString('userid');
     tenant.landlordUid = userid;
     tenant.name = nameController.text;
-    tenant.nin = ninController.text.toLowerCase();
+    tenant.nin = ninController.text.toUpperCase();
     tenant.phone= phoneControlller.text ;
     tenant.email = emailController.text;
     tenant.nextOfKin = nextOfKinController.text;

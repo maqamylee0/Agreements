@@ -25,7 +25,7 @@ class _TenantCardState extends State<TenantCard> {
     borderRadius: BorderRadius.circular(10)
     ),
     height: 105,
-    width: 90,
+    width: 100,
 
     ),
     SizedBox(width: 10,),

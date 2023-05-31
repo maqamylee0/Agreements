@@ -23,15 +23,23 @@ class AddTenantMethod{
           .add(data.toMap());
 
       Fluttertoast.showToast(msg: "Tenant added successfully");
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) =>  TenantList())
-
-      );    } on FirebaseException catch(e){
+      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TenantList()));
+      // Navigator.push(context,
+      //     MaterialPageRoute(builder: (context) =>  TenantList())
+      //
+      // );
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => TenantList()),
+            (Route<dynamic> route) => false,
+      );
+    } on FirebaseException catch(e){
       // navigatorKey.currentState!.popUntil((route)=>route.isFirst);
       Navigator.pop(context);
       if (kDebugMode) {
         print(e);
       }
+
       Fluttertoast.showToast(msg:'${e.message}');
 
     }

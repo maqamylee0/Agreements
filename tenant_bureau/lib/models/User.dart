@@ -15,6 +15,14 @@ class UserModel {
       nin: map['nin'],
     );
   }
+  factory UserModel.fromJson(map) {
+    return UserModel(
+      uid: map['uid'],
+      email: map['email'],
+      name: map['name'],
+      nin: map['nin'],
+    );
+  }
 
   // sending data to our server
   Map<String, dynamic> toMap() {

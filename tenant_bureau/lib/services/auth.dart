@@ -110,7 +110,7 @@ class Auth{
         builder: (context) => const Center(child: CircularProgressIndicator()));
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email.trim(), password:password.trim());
-
+          print('logged innnnnnnnn');
       Navigator.push(context,
           MaterialPageRoute(builder: (context) =>  Home())
 
@@ -125,7 +125,7 @@ class Auth{
 
     }
 
-    navigatorKey.currentState!.popUntil((route)=>route.isFirst);
+    // navigatorKey.currentState!.popUntil((route)=>route.isFirst);
   }
 
   Future<void> passwordReset(String? email,context) async {
@@ -148,8 +148,10 @@ class Auth{
     }
   }
   Future getUserName() async {
-    var prefs = await SharedPreferences.getInstance();
-    var name = await prefs.getString('username');
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    String? name = await firebaseAuth.currentUser?.displayName;
+    // var prefs = await SharedPreferences.getInstance();
+    // var name = await prefs.getString('username');
     print(name);
     return name;
   }
@@ -175,6 +177,34 @@ class Auth{
     // navigatorKey.currentState!.popUntil((route)=>route.);
     // print(doc['nin']);
     return listOfRates;
+  }
+  Future<UserModel> getUser(String uid) async {
+    late Map<dynamic, dynamic> doc ;
+    UserModel? user;
+    // List<RateModel> listOfRates = [];    // showDialog(context: context,barrierDismissible: false,
+    //     builder: (context) => const Center(child: CircularProgressIndicator()));
+    try{
+      FirebaseFirestore mFirebaseFirestore = FirebaseFirestore.instance;
+
+      await mFirebaseFirestore.collection('users')
+          .where('uid', isEqualTo: uid)
+          .get()
+          .then((snapshot) {
+
+           user =  UserModel.fromJson(snapshot.docs.single.data());
+           print(snapshot.docs.asMap());
+
+      });
+      //   print(user?.email);
+      // print(user?.nin);
+      // print(user?.name);
+
+    } catch (e) {
+      print(e);
+    }
+    // navigatorKey.currentState!.popUntil((route)=>route.);
+    // print(doc['nin']);
+    return user!;
   }
 
   Future<List<TenantModel>> getAllTenants(query) async {
