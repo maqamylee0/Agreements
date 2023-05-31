@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tenant_bureau/dashboard/home/addTenant/models/tenant.dart';
 
+import '../../../../utils.dart';
 import 'bottom_sheet.dart';
 
 class TenantButton extends StatefulWidget {
@@ -21,7 +22,7 @@ class _TenantButtonState extends State<TenantButton> {
 
         // minimumSize: MaterialStateProperty.all(Size(150, 20)),
         // padding:  MaterialStateProperty.all(EdgeInsets.fromLTRB(12, 5, 12, 5)),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.brown),
+        backgroundColor: MaterialStateProperty.all<Color>(Statics.thirdColor),
 
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
 
